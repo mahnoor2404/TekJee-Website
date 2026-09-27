@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TEKJEE — phone preview</title>
+<style>
+  *{box-sizing:border-box;}
+  html,body{margin:0;height:100%;}
+  body{
+    background:#0c2340;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-family:system-ui,sans-serif;
+    color:#cfe0f6;
+    overflow:hidden;
+  }
+  .stage{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:14px;
+  }
+  .phone{
+    width:390px;
+    height:844px;
+    border-radius:46px;
+    border:10px solid #050b16;
+    background:#000;
+    box-shadow:0 30px 80px rgba(0,0,0,.55), 0 0 0 2px #1c3358;
+    overflow:hidden;
+    transform-origin:top center;
+  }
+  iframe{
+    width:100%;
+    height:100%;
+    border:0;
+    display:block;
+    background:#fff;
+  }
+  .hint{font-size:13px;opacity:.75;text-align:center;}
+</style>
+</head>
+<body>
+  <div class="stage" id="stage">
+    <div class="phone" id="phone"><iframe id="frame" src="index.html" title="TEKJEE on a phone (390 x 844)"></iframe></div>
+    <div class="hint">Scroll inside the phone. This is the real page at 390 × 844 px, so its mobile styles apply.</div>
+  </div>
+<script>
+  /* shrink the phone to fit shorter windows so it never gets cut off */
+  function fit(){
+    var s = Math.min(1, (window.innerHeight - 60) / 864);
+    var phone = document.getElementById('phone');
+    phone.style.transform = 'scale(' + s + ')';
+    phone.style.marginBottom = (-(864 * (1 - s))) + 'px';
+  }
+  window.addEventListener('resize', fit);
+  fit();
+</script>
+</body>
+</html>

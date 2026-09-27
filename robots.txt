@@ -1,0 +1,24 @@
+# robots.txt for TEKJEE (tekjee.com)
+# Configured for High AI Search Crawlability (GEO & SEO)
+
+User-agent: *
+Allow: /
+
+# Specifically authorize AI & LLM search crawlers (crucial for GEO)
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+# XML Sitemap
+Sitemap: https://tekjee.com/sitemap.xml
