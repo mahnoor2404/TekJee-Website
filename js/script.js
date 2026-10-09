@@ -1,3 +1,123 @@
+/* ---- hero video: plays on its own, independent of scroll (and of GSAP).
+   Cycle: intro clip -> office clip, both with sound and no text on top;
+   when the office clip ends the TEKJEE text fades in over its last frame,
+   stays for 3 seconds, then hides again and the cycle restarts. ---- */
+(function(){
+  var hero = document.querySelector('.video-hero');
+  var heroVideo = document.getElementById('heroVideo');
+  var heroVideo2 = document.getElementById('heroVideo2');
+  var soundBtn = document.getElementById('heroSound');
+  if (!hero || !heroVideo) return;
+
+  var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var TEXT_HOLD_MS = 3000;
+
+  if (reduceMotion){
+    hero.classList.remove('text-hidden');
+    if (soundBtn) soundBtn.hidden = true;
+    heroVideo.addEventListener('loadedmetadata', function(){
+      heroVideo.currentTime = Math.min(0.6, heroVideo.duration * 0.5);
+    });
+    if (heroVideo2) heroVideo2.preload = 'none';
+    return;
+  }
+
+  var activeHero = heroVideo;
+  var showingText = false;
+  var onScreen = true;
+  var restartTimer = null;
+  /* sound is wanted by default; browsers may refuse to autoplay with sound
+     until the visitor interacts, so we fall back to muted until they do */
+  var soundOn = true;
+  var userMuted = false;
+
+  var updateSoundBtn = function(){
+    if (!soundBtn) return;
+    soundBtn.setAttribute('aria-pressed', soundOn ? 'true' : 'false');
+    soundBtn.setAttribute('aria-label', soundOn ? 'Mute sound' : 'Turn sound on');
+  };
+
+  var playActive = function(){
+    if (showingText || !onScreen) return;
+    activeHero.muted = !soundOn;
+    activeHero.play().catch(function(){
+      if (!activeHero.muted){
+        soundOn = false;
+        updateSoundBtn();
+        activeHero.muted = true;
+        activeHero.play().catch(function(){});
+      }
+    });
+  };
+
+  var showClip = function(clip){
+    var other = clip === heroVideo ? heroVideo2 : heroVideo;
+    clip.currentTime = 0;
+    clip.classList.remove('is-hidden');
+    if (other && other !== clip){
+      other.pause();
+      other.classList.add('is-hidden');
+    }
+    activeHero = clip;
+    playActive();
+  };
+
+  var startCycle = function(){
+    restartTimer = null;
+    showingText = false;
+    hero.classList.add('text-hidden');
+    showClip(heroVideo);
+  };
+
+  var showText = function(){
+    showingText = true;
+    hero.classList.remove('text-hidden');
+    restartTimer = setTimeout(startCycle, TEXT_HOLD_MS);
+  };
+
+  heroVideo.addEventListener('ended', heroVideo2 ? function(){ showClip(heroVideo2); } : showText);
+  if (heroVideo2) heroVideo2.addEventListener('ended', showText);
+
+  heroVideo.addEventListener('loadeddata', playActive, {once:true});
+  playActive();
+
+  var setSound = function(on){
+    soundOn = on;
+    activeHero.muted = !on;
+    updateSoundBtn();
+  };
+  if (soundBtn){
+    soundBtn.addEventListener('click', function(e){
+      e.stopPropagation();
+      userMuted = soundOn;
+      setSound(!soundOn);
+    });
+  }
+  /* first real interaction anywhere on the page unlocks sound */
+  var unlockSound = function(){
+    window.removeEventListener('pointerdown', unlockSound);
+    window.removeEventListener('keydown', unlockSound);
+    if (!soundOn && !userMuted) setSound(true);
+  };
+  window.addEventListener('pointerdown', unlockSound);
+  window.addEventListener('keydown', unlockSound);
+  updateSoundBtn();
+
+  /* Pause the video (and its audio) while it's scrolled off-screen, so it
+     isn't competing for frame budget with the scroll-linked animation
+     further down. */
+  if ('IntersectionObserver' in window){
+    var heroObserver = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        onScreen = entry.isIntersecting;
+        if (onScreen) playActive();
+        else activeHero.pause();
+      });
+    }, {threshold:0.01});
+    heroObserver.observe(hero);
+  }
+})();
+
 (function(){
   if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
   gsap.registerPlugin(ScrollTrigger);
@@ -5,36 +125,6 @@
   var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var servicesSection = document.getElementById('services');
 
-  var heroVideo = document.getElementById('heroVideo');
-
-  /* ---- hero video: plays on its own, independent of scroll ---- */
-  if (heroVideo){
-    if (reduceMotion){
-      heroVideo.removeAttribute('autoplay');
-      heroVideo.loop = false;
-      heroVideo.addEventListener('loadedmetadata', function(){
-        heroVideo.pause();
-        heroVideo.currentTime = Math.min(0.6, heroVideo.duration * 0.5);
-      });
-    } else {
-      var tryPlay = function(){ heroVideo.play().catch(function(){}); };
-      heroVideo.addEventListener('loadeddata', tryPlay, {once:true});
-      tryPlay();
-
-      /* Pause the decode while it's scrolled off-screen (e.g. while you're
-         scrolling through the carousel further down) so it isn't competing
-         for frame budget with the scroll-linked animation there. */
-      if ('IntersectionObserver' in window){
-        var heroObserver = new IntersectionObserver(function(entries){
-          entries.forEach(function(entry){
-            if (entry.isIntersecting) heroVideo.play().catch(function(){});
-            else heroVideo.pause();
-          });
-        }, {threshold:0.01});
-        heroObserver.observe(heroVideo);
-      }
-    }
-  }
 
   /* ---- particle morph: ~1100 small round particles, one colour, random
      sizes. They begin as a globe, then flow into a shape for whichever topic

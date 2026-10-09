@@ -26,7 +26,17 @@
       TEKJEE
     </a>
     <nav class="nav-links">
-      <a href="#services">Services</a>
+      <a href="index.html" aria-current="page">Home</a>
+      <div class="nav-dd">
+        <button class="nav-dd-btn" type="button" aria-expanded="false" aria-controls="navServices">Services <span class="nav-dd-caret" aria-hidden="true">▾</span></button>
+        <div class="nav-dd-menu" id="navServices">
+          <a href="web-development.html">Web Development</a>
+          <a href="camera-monitoring.html">Camera Surveillance &amp; Virtual Management</a>
+          <a href="crm-automation.html">CRM Automation</a>
+          <a href="ai-automation.html">AI Automation</a>
+          <a href="virtual-marketing.html">Digital Marketing</a>
+        </div>
+      </div>
       <a href="#approach">Approach</a>
       <a href="why-tekjee.html">Why TEKJEE</a>
       <a href="#faq">FAQ</a>
@@ -36,14 +46,25 @@
       <svg class="tt-icon tt-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.6M12 18.9v2.6M4.6 4.6l1.85 1.85M17.55 17.55l1.85 1.85M2.5 12h2.6M18.9 12h2.6M4.6 19.4l1.85-1.85M17.55 6.45l1.85-1.85"/></svg>
       <svg class="tt-icon tt-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.2 14.6A8.2 8.2 0 1 1 9.4 3.8a6.6 6.6 0 0 0 10.8 10.8z"/></svg>
     </button>
-    <a class="nav-cta" href="#contact">START A PROJECT →</a>
+    <a class="nav-cta" data-book="project" href="#contact">START A PROJECT →</a>
   </div>
 </header>
 
 <main id="view-home" class="page-view">
-  <section class="video-hero">
-    <video id="heroVideo" class="scroll-video" src="assets/hero-video-futuristic.mp4" autoplay muted loop playsinline preload="auto" aria-hidden="true"></video>
+  <section class="video-hero text-hidden">
+    <div class="hero-frame">
+      <video id="heroVideo" class="scroll-video" src="assets/hero-intro.mp4" playsinline preload="auto" aria-hidden="true"></video>
+      <video id="heroVideo2" class="scroll-video is-hidden" src="assets/hero-office.mp4" playsinline preload="auto" aria-hidden="true"></video>
+      <button id="heroSound" class="hero-sound" type="button" aria-pressed="false" aria-label="Turn sound on">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M11 5 6 9H2v6h4l5 4V5z" fill="currentColor"/>
+          <path class="snd-on" d="M15.5 8.5a5 5 0 0 1 0 7M19 5a10 10 0 0 1 0 14"/>
+          <path class="snd-off" d="m23 9-6 6M17 9l6 6"/>
+        </svg>
+      </button>
+    </div>
     <div class="video-scrim" aria-hidden="true"></div>
+    <noscript><style>.video-hero.text-hidden .hero-content,.video-hero.text-hidden .video-scrim{opacity:1;visibility:visible;}</style></noscript>
 
     <div class="hero-content">
       <span class="eyebrow">DIGITAL MARKETING • AI AUTOMATION • WEB • BACK OFFICE • CRM AUTOMATION • SEO &amp; GEO • CAMERA MONITORING</span>
@@ -53,7 +74,7 @@
       </div>
       <p class="hero-sub">TEKJEE is a digital solutions company offering digital marketing, AI automation, web development, back office support, CRM automation, SEO and GEO (Generative Engine Optimization), and camera monitoring — through one team and one point of contact.</p>
       <div class="hero-actions">
-        <a class="btn btn-primary" href="#contact">Book a consult</a>
+        <a class="btn btn-primary" data-book="consult" href="#contact">Book a consult</a>
         <a class="btn btn-ghost" href="#services">See what we build ↓</a>
       </div>
     </div>
@@ -100,7 +121,7 @@
           <a class="card-link" href="ai-automation.html">Explore AI Automation →</a>
         </article>
 
-        <article class="service-card" data-card>
+        <article class="service-card" data-card data-href="web-development.html">
           <div class="service-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><circle cx="6.5" cy="6.5" r=".6" fill="currentColor" stroke="none"/><circle cx="9" cy="6.5" r=".6" fill="currentColor" stroke="none"/></svg>
           </div>
@@ -111,9 +132,10 @@
             <li>Full-stack builds &amp; CMS handoff</li>
             <li>Speed &amp; technical SEO built in</li>
           </ul>
+          <a class="card-link" href="web-development.html">Explore Web Development →</a>
         </article>
 
-        <article class="service-card" data-card data-href="back-office-support.html">
+        <article class="service-card" data-card data-href="camera-monitoring.html#back-office">
           <div class="service-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4h6v3H9z"/><path d="M9 13l1.5 1.5L14 11"/><line x1="9" y1="18" x2="15" y2="18"/></svg>
           </div>
@@ -124,7 +146,7 @@
             <li>Scheduling &amp; follow-ups</li>
             <li>Documents &amp; invoicing</li>
           </ul>
-          <a class="card-link" href="back-office-support.html">Explore Back Office Support →</a>
+          <a class="card-link" href="camera-monitoring.html#back-office">Explore Back Office Support →</a>
         </article>
 
         <article class="service-card" data-card data-href="crm-automation.html">
@@ -136,12 +158,12 @@
           <ul class="service-list">
             <li>CRM workflow automation</li>
             <li>Lead follow-up automation</li>
-            <li>Automated lead management</li>
+            <li>Zoho &amp; Salesforce automation</li>
           </ul>
           <a class="card-link" href="crm-automation.html">Explore CRM Automation →</a>
         </article>
 
-        <article class="service-card" data-card>
+        <article class="service-card" data-card data-href="virtual-marketing.html#seo-geo">
           <div class="service-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="10.5" cy="10.5" r="6"/><line x1="15" y1="15" x2="20" y2="20"/><path d="M8 12.5l2-2.5 1.5 1.5 2-3"/></svg>
           </div>
@@ -152,6 +174,7 @@
             <li>Technical SEO</li>
             <li>GEO &amp; AI search visibility</li>
           </ul>
+          <a class="card-link" href="virtual-marketing.html#seo-geo">Explore SEO &amp; GEO →</a>
         </article>
 
         <article class="service-card" data-card data-href="camera-monitoring.html">
@@ -226,11 +249,12 @@
           <div class="prism-panel" data-panel="2">
             <h3><em class="curly">Web development</em> that converts</h3>
             <p>TEKJEE designs and builds fast, responsive websites and web apps in-house, made to generate leads and sales.</p>
+            <a class="prism-link" href="web-development.html">Explore Web Development →</a>
           </div>
           <div class="prism-panel" data-panel="3">
             <h3><em class="curly">Back office support</em>, handled</h3>
             <p>TEKJEE handles admin, data entry, scheduling and follow-ups so your team can focus on growing the business.</p>
-            <a class="prism-link" href="back-office-support.html">Explore Back Office Support →</a>
+            <a class="prism-link" href="camera-monitoring.html#back-office">Explore Back Office Support →</a>
           </div>
           <div class="prism-panel" data-panel="4">
             <h3><em class="curly">CRM automation</em> that keeps customers close</h3>
@@ -240,6 +264,7 @@
           <div class="prism-panel" data-panel="5">
             <h3><em class="curly">SEO &amp; GEO</em>, found by people and AI</h3>
             <p>TEKJEE optimizes your site for Google, Local SEO and for AI assistants such as ChatGPT, Gemini and Perplexity.</p>
+            <a class="prism-link" href="virtual-marketing.html#seo-geo">Explore SEO &amp; GEO →</a>
           </div>
           <div class="prism-panel" data-panel="6">
             <h3><em class="curly">Camera monitoring</em>, 24/7</h3>
@@ -373,6 +398,64 @@
   </section>
 
 <!--/TEASERS-->
+  <section id="instagram" class="ig-section">
+    <div class="ig-intro wrap">
+      <h2>
+        <span class="ig-line">Watch the latest from <span class="ig-accent">TEKJEE</span></span>
+        <span class="ig-line">on Instagram</span>
+      </h2>
+      <p class="ig-line">Short clips from <a class="ig-handle" href="https://www.instagram.com/tekjee2019/" target="_blank" rel="noopener noreferrer">@tekjee2019</a>. Tap any reel to play it here.</p>
+      <div class="ig-line ig-actions">
+        <a class="btn btn-primary" href="https://www.instagram.com/tekjee2019/" target="_blank" rel="noopener noreferrer">Follow @tekjee2019</a>
+      </div>
+    </div>
+    <div class="ig-glow" aria-hidden="true"></div>
+    <div class="ig-scroll">
+      <div class="ig-sticky">
+        <div class="ig-gallery" aria-label="Instagram reels">
+          <div class="ig-col ig-col--a" data-y="7,-11">
+            <a class="ig-card" href="https://www.instagram.com/reel/Dbx73p7gg_D/" data-ig="Dbx73p7gg_D" data-i="0" aria-label="Play Instagram reel 1 of 7">
+              <span class="ig-frame"><iframe src="https://www.instagram.com/reel/Dbx73p7gg_D/embed/" title="Instagram reel 1 preview" loading="lazy" tabindex="-1" scrolling="no" aria-hidden="true"></iframe></span>
+            </a>
+            <a class="ig-card" href="https://www.instagram.com/reel/Dbr8tS4iQjX/" data-ig="Dbr8tS4iQjX" data-i="3" aria-label="Play Instagram reel 4 of 7">
+              <span class="ig-frame"><iframe src="https://www.instagram.com/reel/Dbr8tS4iQjX/embed/" title="Instagram reel 4 preview" loading="lazy" tabindex="-1" scrolling="no" aria-hidden="true"></iframe></span>
+            </a>
+            <a class="ig-card" href="https://www.instagram.com/reel/DbnoJ_6ETiT/" data-ig="DbnoJ_6ETiT" data-i="6" aria-label="Play Instagram reel 7 of 7">
+              <span class="ig-frame"><iframe src="https://www.instagram.com/reel/DbnoJ_6ETiT/embed/" title="Instagram reel 7 preview" loading="lazy" tabindex="-1" scrolling="no" aria-hidden="true"></iframe></span>
+            </a>
+          </div>
+          <div class="ig-col ig-col--b" data-y="-8,9">
+            <a class="ig-card" href="https://www.instagram.com/reel/DbvcNjaFW_m/" data-ig="DbvcNjaFW_m" data-i="1" aria-label="Play Instagram reel 2 of 7">
+              <span class="ig-frame"><iframe src="https://www.instagram.com/reel/DbvcNjaFW_m/embed/" title="Instagram reel 2 preview" loading="lazy" tabindex="-1" scrolling="no" aria-hidden="true"></iframe></span>
+            </a>
+            <a class="ig-card" href="https://www.instagram.com/reel/DbqJRlICKcp/" data-ig="DbqJRlICKcp" data-i="4" aria-label="Play Instagram reel 5 of 7">
+              <span class="ig-frame"><iframe src="https://www.instagram.com/reel/DbqJRlICKcp/embed/" title="Instagram reel 5 preview" loading="lazy" tabindex="-1" scrolling="no" aria-hidden="true"></iframe></span>
+            </a>
+            <a class="ig-card" href="https://www.instagram.com/reel/Dbx73p7gg_D/" data-ig="Dbx73p7gg_D" data-i="0" tabindex="-1" aria-hidden="true">
+              <span class="ig-frame"><iframe src="https://www.instagram.com/reel/Dbx73p7gg_D/embed/" title="Instagram reel 1 preview" loading="lazy" tabindex="-1" scrolling="no" aria-hidden="true"></iframe></span>
+            </a>
+          </div>
+          <div class="ig-col ig-col--c" data-y="7,-11">
+            <a class="ig-card" href="https://www.instagram.com/reel/Dbs2U_1D2Nw/" data-ig="Dbs2U_1D2Nw" data-i="2" aria-label="Play Instagram reel 3 of 7">
+              <span class="ig-frame"><iframe src="https://www.instagram.com/reel/Dbs2U_1D2Nw/embed/" title="Instagram reel 3 preview" loading="lazy" tabindex="-1" scrolling="no" aria-hidden="true"></iframe></span>
+            </a>
+            <a class="ig-card" href="https://www.instagram.com/reel/DbpXivlESmy/" data-ig="DbpXivlESmy" data-i="5" aria-label="Play Instagram reel 6 of 7">
+              <span class="ig-frame"><iframe src="https://www.instagram.com/reel/DbpXivlESmy/embed/" title="Instagram reel 6 preview" loading="lazy" tabindex="-1" scrolling="no" aria-hidden="true"></iframe></span>
+            </a>
+            <a class="ig-card" href="https://www.instagram.com/reel/Dbr8tS4iQjX/" data-ig="Dbr8tS4iQjX" data-i="3" tabindex="-1" aria-hidden="true">
+              <span class="ig-frame"><iframe src="https://www.instagram.com/reel/Dbr8tS4iQjX/embed/" title="Instagram reel 4 preview" loading="lazy" tabindex="-1" scrolling="no" aria-hidden="true"></iframe></span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <dialog class="ig-modal" aria-label="Instagram reel player">
+      <button class="ig-close" type="button" aria-label="Close">&#10005;</button>
+      <button class="ig-step ig-prev" type="button" data-step="-1" aria-label="Previous reel">&#8592;</button>
+      <div class="ig-player"><iframe title="Instagram reel" allow="autoplay; encrypted-media; fullscreen; clipboard-write" allowfullscreen></iframe></div>
+      <button class="ig-step ig-next" type="button" data-step="1" aria-label="Next reel">&#8594;</button>
+    </dialog>
+  </section>
   <section id="faq" class="faq-section">
     <div class="wrap">
       <div class="sect-head" data-reveal="left">
@@ -422,7 +505,7 @@
       <h2 class="cta-wipe">Ready to put it under one roof?</h2>
       <p class="cta-fade">Tell TEKJEE what you need — digital marketing, a website, AI automation, CRM automation, SEO and GEO, back office help, or camera monitoring — and TEKJEE will scope the rest on a call.</p>
       <div class="hero-actions cta-fade">
-        <a class="btn btn-primary" href="mailto:support@tekjee.com">Book a consult</a>
+        <a class="btn btn-primary" data-book="consult" href="mailto:support@tekjee.com">Book a consult</a>
         <a class="btn btn-ghost" href="#services">Compare services ↑</a>
       </div>
       <p class="contact-line cta-fade"><a href="mailto:support@tekjee.com">support@tekjee.com</a> · Mon–Fri, 9am–6pm · Replies within one business day</p>
@@ -533,5 +616,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script src="js/script.js"></script>
 <script src="js/page.js"></script>
+<script src="js/ig-reels.js"></script>
 </body>
 </html>

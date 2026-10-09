@@ -6,12 +6,12 @@ TEKJEE provides real-time, proactive video surveillance, AI workflow automation,
 
 ## Core Services
 
-- [Digital Marketing](https://tekjee.com/virtual-marketing.html): Social media management, email and content campaigns, SEO, Local SEO, and paid advertising, planned, run and reported for businesses without an in-house marketing team.
+- [Digital Marketing](https://tekjee.com/virtual-marketing.html): GEO (Generative Engine Optimization) first, plus SEO and Local SEO, social media marketing, paid ads on every social platform, branding and graphic design, for businesses without an in-house marketing team.
 - [Virtual Camera Monitoring](https://tekjee.com/camera-monitoring.html): 24/7 live and remote video surveillance, AI video monitoring, motion alerts, and secure cloud or NVR storage, with emergency dispatch.
 - [AI Automation & Agentic AI](https://tekjee.com/ai-automation.html): Custom AI bots, a Virtual Manager, autonomous business agents, and AI workflow automation.
 - [CRM Automation](https://tekjee.com/crm-automation.html): CRM workflow automation, automated lead capture, automated multi-channel follow-ups, and sales pipeline optimization.
-- [Back Office Support](https://tekjee.com/back-office-support.html): Remote administration, transaction monitoring, data entry, and scalable outsourced operational support.
-- Web Development: Fast, responsive, custom-designed websites and web apps built in-house for lead generation and online sales.
+- [Back Office Support](https://tekjee.com/camera-monitoring.html#back-office): Part of Camera Surveillance & Virtual Management. Remote administration, transaction reconciliation, bookkeeping, data entry and scalable outsourced operational support, run by the same team that monitors your cameras.
+- [Web Development](https://tekjee.com/web-development.html): SEO and GEO-ready website development — custom business websites, e-commerce stores, landing pages and web apps with technical SEO, Local SEO, schema markup and Generative Engine Optimization built in.
 - SEO & GEO: Local SEO, Technical SEO, and Generative Engine Optimization (GEO) so a business ranks on Google and is cited by AI assistants such as ChatGPT, Gemini and Perplexity.
 
 ## Target Industries

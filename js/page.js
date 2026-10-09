@@ -38,10 +38,10 @@
   }, {threshold: 0.25}).observe(v);
 })();
 
-/* Virtual Marketing page: the "what is included" cards move exactly like the service carousel on the home page
+/* Service pages (Digital Marketing, Web Development): the cards move exactly like the service carousel on the home page
    (same timing, same 3D depth and tilt, same glow on the centred card). It starts once the section is on screen. */
 (function(){
-  var section = document.getElementById('vm-included');
+  var section = document.querySelector('#vm-included, #wd-builds');
   if (!section || typeof gsap === 'undefined') return;
   var viewport = section.querySelector('.carousel-viewport'), track = section.querySelector('.carousel-track');
   if (!viewport || !track) return;
@@ -193,8 +193,8 @@
   var bot = document.getElementById('tekBot');
   if (!bot) return;
 
-  var LINKS = {vm:'virtual-marketing.html', services:'index.html#services', approach:'index.html#approach', faq:'index.html#faq', contact:'mailto:support@tekjee.com'};
-  var LINK_LABELS = {vm:'Digital Marketing page', services:'See all services', approach:'How a project works', faq:'Read the FAQ', contact:'Email TEKJEE'};
+  var LINKS = {vm:'virtual-marketing.html', camera:'camera-monitoring.html', backoffice:'camera-monitoring.html#back-office', crm:'crm-automation.html', services:'index.html#services', approach:'index.html#approach', faq:'index.html#faq', contact:'mailto:support@tekjee.com'};
+  var LINK_LABELS = {vm:'Digital Marketing page', camera:'Camera Surveillance page', backoffice:'Back office support', crm:'CRM Automation page', services:'See all services', approach:'How a project works', faq:'Read the FAQ', contact:'Email TEKJEE'};
 
   /* ---- knowledge base: keywords (whole words or phrases; longer phrases weigh more) -> answer ---- */
   var INTENTS = [
@@ -211,16 +211,16 @@
     {id:'seo', kw:['seo','geo','local seo','technical seo','generative engine','generative engine optimization','answer engine','answer engine optimization','ai search optimization','ai search visibility','chatgpt','gemini','perplexity','rank','ranking','google','search','search engine','visibility'],
      text:'SEO, Local SEO and Technical SEO help a website rank in search engines such as Google. GEO (Generative Engine Optimization) and Answer Engine Optimization help a business get named and cited in answers from AI assistants such as ChatGPT, Gemini and Perplexity. TEKJEE offers both.', links:['faq','services']},
     {id:'social', kw:['instagram','linkedin','facebook','social media pages','follow','socials'], text:'You can find TEKJEE on Instagram, LinkedIn and Facebook. The icons are in the Get in Touch section at the bottom of the home page.', links:['contact']},
-    {id:'vm', kw:['marketing','digital marketing','digital marketing services','digital marketing for small businesses','virtual marketing','social','social media','media','email marketing','ads','advertising','paid ads','content','campaign','campaigns','instagram','facebook','newsletter','promotion'],
-     text:'Digital Marketing is TEKJEE’s remote marketing service: social media management, email and content campaigns, SEO and paid ads with regular reporting, for businesses without an in-house marketing team.', links:['vm']},
+    {id:'vm', kw:['marketing','digital marketing','digital marketing services','digital marketing for small businesses','virtual marketing','social','social media','media','email marketing','ads','advertising','paid ads','content','campaign','campaigns','instagram','facebook','newsletter','promotion','branding','brand','logo','graphic design','graphic designing','design','tiktok','linkedin','geo'],
+     text:'Digital Marketing is TEKJEE’s remote marketing service: GEO and SEO (with a focus on GEO), social media marketing, paid ads on every social platform, branding and graphic design, with regular reporting, for businesses without an in-house marketing team.', links:['vm']},
     {id:'ai', kw:['ai','artificial intelligence','ai automation','ai automation services','business ai automation','ai business automation','agentic ai','ai agents','ai agents for business','ai bots','virtual manager','automation','automate','automations','agent','agents','chatbot','chatbots','machine learning','ai workflow automation','workflow'],
      text:'TEKJEE’s AI Automation covers agentic AI, AI bots, a Virtual Manager and AI workflow automation that remove repetitive work from marketing, sales and operations.', links:['services']},
     {id:'web', kw:['website','websites','web','web development','development','developer','app','apps','design','wordpress','site','landing page','ecommerce','e commerce','store'],
      text:'TEKJEE designs and builds fast, responsive, custom websites and web apps in-house, made for lead generation and online sales, with speed and technical SEO built in.', links:['services']},
     {id:'back', kw:['back office','back office support','back office support services','back office outsourcing','virtual back office','virtual back office services','administrative support','admin','administration','data entry','scheduling','invoicing','invoices','paperwork','follow ups','follow up','outsourcing'],
-     text:'TEKJEE’s back office support covers back office outsourcing: data entry, admin, scheduling, follow-ups and invoicing, so business owners are free of paperwork.', links:['services']},
-    {id:'crm', kw:['crm','crm automation','crm workflow automation','sales automation','lead follow-up automation','lead follow up automation','automated lead management','customer management','leads','lead','pipeline','pipelines','customer records','customers','sales pipeline'],
-     text:'TEKJEE sets up CRM Automation: CRM workflow automation, sales automation, lead follow-up automation and automated lead management, so every lead and customer record lives in one system.', links:['services']},
+     text:'TEKJEE’s back office support is part of Camera Surveillance & Virtual Management: the same team reconciles transactions, keeps your books, handles data entry and admin, and coordinates vendors.', links:['backoffice']},
+    {id:'crm', kw:['crm','crm automation','crm workflow automation','sales automation','lead follow-up automation','lead follow up automation','automated lead management','zoho','zoho crm','salesforce','deploy','existing solution','customer management','leads','lead','pipeline','pipelines','customer records','customers','sales pipeline'],
+     text:'TEKJEE sets up CRM Automation, including automation for companies on Zoho and Salesforce: CRM workflow automation, sales automation and lead follow-up automation. TEKJEE can also deploy existing CRM solutions you already have.', links:['crm']},
     {id:'camera', kw:['camera','cameras','camera monitoring','virtual camera monitoring','live camera monitoring','live camera surveillance','remote camera monitoring','remote video surveillance','commercial camera monitoring','business security camera monitoring','ai video monitoring','gas station camera monitoring','retail store camera monitoring','warehouse camera monitoring','restaurant camera monitoring','hotel camera monitoring','motel camera monitoring','surveillance','cctv','security','monitoring','nvr','24/7','247','alarm','footage'],
      text:'TEKJEE provides Camera Monitoring: virtual and live camera monitoring, remote video surveillance and AI video monitoring with 24/7 alerts and secure cloud or NVR storage, for gas stations, retail stores, warehouses, restaurants, hotels and motels.', links:['services']},
     {id:'process', kw:['process','steps','how does it work','how do you work','how does a project work','how it works','workflow steps','timeline','how long'],
@@ -347,3 +347,238 @@
   btn.addEventListener('mouseleave', function(){ if (panel.hidden) pose('stand'); });
   document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && !panel.hidden) setOpen(false); });
 })();
+
+/* Services dropdown in the nav: hover opens it on desktop, click/tap toggles it,
+   Escape or a click outside closes it */
+(function(){
+  var dd = document.querySelector('.nav-dd');
+  if (!dd) return;
+  var btn = dd.querySelector('.nav-dd-btn');
+  function set(open){ dd.classList.toggle('open', open); btn.setAttribute('aria-expanded', open ? 'true' : 'false'); }
+  btn.addEventListener('click', function(e){ e.stopPropagation(); set(!dd.classList.contains('open')); });
+  document.addEventListener('click', function(e){ if (!dd.contains(e.target)) set(false); });
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape' && dd.classList.contains('open')) { set(false); btn.focus(); }
+  });
+  dd.addEventListener('focusout', function(e){ if (!dd.contains(e.relatedTarget)) set(false); });
+})();
+
+/* BOOKING / START PROJECT card: opened by any [data-book] link
+   ("Book a consult" buttons and the START A PROJECT nav button) */
+(function(){
+  var triggers = document.querySelectorAll('[data-book]');
+  if (!triggers.length) return;
+
+  var SERVICES = [
+    'Web Development',
+    'Camera Surveillance & Virtual Management',
+    'CRM Automation',
+    'AI Automation',
+    'Digital Marketing'
+  ];
+  /* preselect the service that matches the page the visitor is on */
+  var PAGE_SERVICE = {
+    'camera-monitoring': 1, 'gas-stations': 1, 'hotels-motels': 1, 'restaurants': 1, 'retail': 1, 'warehouses': 1,
+    'web-development': 0, 'crm-automation': 2, 'ai-automation': 3, 'virtual-marketing': 4
+  };
+  var page = (location.pathname.split('/').pop() || '').replace(/\.html$/, '');
+  var EMAIL = 'support@tekjee.com';
+
+  var overlay = document.createElement('div');
+  overlay.className = 'book-overlay';
+  overlay.hidden = true;
+  overlay.innerHTML =
+    '<div class="book-card" role="dialog" aria-modal="true" aria-labelledby="bookTitle">' +
+      '<div class="book-art" aria-hidden="true">' +
+        '<canvas class="book-art-canvas"></canvas>' +
+        '<div class="book-art-copy">' +
+          '<p class="book-art-title">Tell us the goal,<br>we build the rest</p>' +
+          '<p class="book-art-sub">One team for websites, AI, CRM, marketing and camera monitoring.</p>' +
+        '</div>' +
+      '</div>' +
+      '<div class="book-main">' +
+      '<button class="book-close" type="button" aria-label="Close">×</button>' +
+      '<span class="book-eyebrow">BOOKING / START PROJECT</span>' +
+      '<h2 id="bookTitle">Book a consult</h2>' +
+      '<p>Tell TEKJEE a little about you and the service you need. TEKJEE replies within one business day.</p>' +
+      '<form class="book-form" novalidate>' +
+        '<div class="book-field"><label for="bookName">Full name</label>' +
+          '<input id="bookName" name="name" type="text" autocomplete="name" required maxlength="100">' +
+          '<span class="book-err" id="bookNameErr"></span></div>' +
+        '<div class="book-field"><label for="bookEmail">Email address</label>' +
+          '<input id="bookEmail" name="email" type="email" autocomplete="email" required maxlength="150">' +
+          '<span class="book-err" id="bookEmailErr"></span></div>' +
+        '<div class="book-field"><label for="bookPhone">Phone number</label>' +
+          '<input id="bookPhone" name="phone" type="tel" autocomplete="tel" required maxlength="30">' +
+          '<span class="book-err" id="bookPhoneErr"></span></div>' +
+        '<div class="book-field"><label for="bookService">Service</label>' +
+          '<select id="bookService" name="service" required>' +
+            '<option value="">Select a service</option>' +
+            SERVICES.map(function(s){ return '<option>' + s.replace(/&/g, '&amp;') + '</option>'; }).join('') +
+          '</select>' +
+          '<span class="book-err" id="bookServiceErr"></span></div>' +
+        '<button class="btn btn-primary" type="submit">Submit request</button>' +
+        '<p class="book-note">Submitting opens your email app with your details filled in, ready to send to ' + EMAIL + '.</p>' +
+      '</form>' +
+      '<div class="book-done" hidden>' +
+        '<div class="book-tick" aria-hidden="true">✓</div>' +
+        '<h2>Thanks — almost done</h2>' +
+        '<p>Send the email that just opened and TEKJEE will get back to you within one business day. ' +
+        'If no email app opened, write to <a href="mailto:' + EMAIL + '">' + EMAIL + '</a> or call +1 (646) 934-8855.</p>' +
+        '<button class="btn btn-ghost book-done-close" type="button">Close</button>' +
+      '</div>' +
+      '</div>' +
+    '</div>';
+  document.body.appendChild(overlay);
+
+  var card = overlay.querySelector('.book-card');
+  var form = overlay.querySelector('.book-form');
+  var done = overlay.querySelector('.book-done');
+  var title = overlay.querySelector('#bookTitle');
+  var fields = {
+    name: form.querySelector('#bookName'),
+    email: form.querySelector('#bookEmail'),
+    phone: form.querySelector('#bookPhone'),
+    service: form.querySelector('#bookService')
+  };
+  var lastFocus = null;
+  var art = grainGradient(overlay.querySelector('.book-art-canvas'));
+
+  function open(kind){
+    lastFocus = document.activeElement;
+    title.textContent = kind === 'project' ? 'Start a project' : kind === 'demo' ? 'Book a demo' : 'Book a consult';
+    form.hidden = false; done.hidden = true;
+    if (!fields.service.value && PAGE_SERVICE[page] !== undefined) fields.service.value = SERVICES[PAGE_SERVICE[page]];
+    overlay.hidden = false;
+    document.body.classList.add('book-lock');
+    requestAnimationFrame(function(){ overlay.classList.add('show'); });
+    art.start();
+    fields.name.focus();
+  }
+  function close(){
+    art.stop();
+    overlay.classList.remove('show');
+    overlay.hidden = true;
+    document.body.classList.remove('book-lock');
+    if (lastFocus && lastFocus.focus) lastFocus.focus();
+  }
+
+  Array.prototype.forEach.call(triggers, function(t){
+    t.addEventListener('click', function(e){ e.preventDefault(); open(t.getAttribute('data-book')); });
+  });
+  overlay.addEventListener('click', function(e){ if (e.target === overlay) close(); });
+  overlay.querySelector('.book-close').addEventListener('click', close);
+  overlay.querySelector('.book-done-close').addEventListener('click', close);
+  document.addEventListener('keydown', function(e){
+    if (overlay.hidden) return;
+    if (e.key === 'Escape') { close(); return; }
+    if (e.key !== 'Tab') return;
+    /* keep keyboard focus inside the card */
+    var f = Array.prototype.filter.call(card.querySelectorAll('button, a[href], input, select'), function(el){ return el.offsetParent !== null; });
+    if (!f.length) return;
+    var first = f[0], last = f[f.length - 1];
+    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+  });
+
+  function check(key){
+    var el = fields[key], v = el.value.trim(), msg = '';
+    if (!v) msg = 'This field is required.';
+    else if (key === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) msg = 'Enter a valid email address.';
+    else if (key === 'phone' && v.replace(/\D/g, '').length < 7) msg = 'Enter a valid phone number.';
+    else if (key === 'service' && SERVICES.indexOf(v) < 0) msg = 'Choose a service.';
+    var err = document.getElementById(el.id + 'Err');
+    err.textContent = msg;
+    if (msg) { el.setAttribute('aria-invalid', 'true'); el.setAttribute('aria-describedby', err.id); }
+    else { el.removeAttribute('aria-invalid'); el.removeAttribute('aria-describedby'); }
+    return !msg;
+  }
+  Object.keys(fields).forEach(function(k){
+    fields[k].addEventListener(k === 'service' ? 'change' : 'blur', function(){ if (fields[k].value) check(k); });
+  });
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var bad = Object.keys(fields).filter(function(k){ return !check(k); });
+    if (bad.length) { fields[bad[0]].focus(); return; }
+    var d = {};
+    Object.keys(fields).forEach(function(k){ d[k] = fields[k].value.trim(); });
+    var subject = title.textContent + ': ' + d.service;
+    var body = 'Full name: ' + d.name + '\nEmail: ' + d.email + '\nPhone: ' + d.phone + '\nService: ' + d.service + '\n';
+    location.href = 'mailto:' + EMAIL + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+    form.reset();
+    form.hidden = true; done.hidden = false;
+    done.querySelector('.book-done-close').focus();
+  });
+})();
+
+/* Animated grain gradient for the booking card's left panel: soft colour blobs drift in from the corners
+   (pastel and dark blue on navy) with a film-grain texture on top. Plain WebGL, no library.
+   Runs only while the card is open; with reduced motion it draws a single still frame.
+   Without WebGL the panel keeps its CSS gradient background. */
+function grainGradient(canvas){
+  var noop = {start: function(){}, stop: function(){}};
+  var gl = canvas && (canvas.getContext('webgl') || canvas.getContext('experimental-webgl'));
+  if (!gl) return noop;
+  var still = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  var vs = 'attribute vec2 p;void main(){gl_Position=vec4(p,0.,1.);}';
+  var fs = [
+    'precision mediump float;',
+    'uniform vec2 r;uniform float t;',
+    'float h(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}',
+    'float n(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);',
+    ' return mix(mix(h(i),h(i+vec2(1,0)),f.x),mix(h(i+vec2(0,1)),h(i+vec2(1,1)),f.x),f.y);}',
+    'float fbm(vec2 p){float v=0.,a=.5;for(int k=0;k<5;k++){v+=a*n(p);p*=2.02;a*=.5;}return v;}',
+    'void main(){',
+    ' vec2 uv=gl_FragCoord.xy/r;vec2 q=uv*vec2(r.x/r.y,1.);',
+    ' float w=fbm(q*1.6+vec2(t*.05,-t*.04));',
+    ' float wb=fbm(q*2.4+w*1.4-vec2(t*.03));',
+    /* distance to the nearest (gently drifting) corner, roughened by noise */
+    ' vec2 c1=vec2(.02+.06*sin(t*.21),.98+.05*cos(t*.17)),c2=vec2(.98+.05*cos(t*.19),.02+.06*sin(t*.23));',
+    ' vec2 c3=vec2(.96+.04*cos(t*.19),.97+.04*sin(t*.13)),c4=vec2(.03+.05*cos(t*.15),.03+.04*sin(t*.21));',
+    ' float d=min(distance(uv,c3),distance(uv,c4));',
+    ' float m=1.-smoothstep(.0,1.,d+.42*(wb-.5));',
+    ' vec3 navy=vec3(.020,.051,.125),deep=vec3(.039,.184,.839),mid=vec3(.353,.580,.957),pastel=vec3(.749,.867,1.),ice=vec3(.918,.957,1.);',
+    ' float k=clamp(m*1.15+.25*(w-.5),0.,1.);',
+    ' vec3 col=mix(navy,deep,smoothstep(0.,.35,k));',
+    ' col=mix(col,mid,smoothstep(.3,.6,k));',
+    ' col=mix(col,pastel,smoothstep(.55,.82,k));',
+    ' col=mix(col,ice,smoothstep(.85,1.,k));',
+    ' col+=(h(gl_FragCoord.xy+fract(t)*91.)-.5)*.11;',
+    ' gl_FragColor=vec4(col,1.);',
+    '}'
+  ].join('\n');
+  function sh(type, src){ var o = gl.createShader(type); gl.shaderSource(o, src); gl.compileShader(o); return gl.getShaderParameter(o, gl.COMPILE_STATUS) ? o : null; }
+  var v = sh(gl.VERTEX_SHADER, vs), f = sh(gl.FRAGMENT_SHADER, fs);
+  if (!v || !f) return noop;
+  var prog = gl.createProgram();
+  gl.attachShader(prog, v); gl.attachShader(prog, f); gl.linkProgram(prog);
+  if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) return noop;
+  gl.useProgram(prog);
+  gl.bindBuffer(gl.ARRAY_BUFFER, gl.createBuffer());
+  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 1,-1, -1,1, 1,1]), gl.STATIC_DRAW);
+  var loc = gl.getAttribLocation(prog, 'p');
+  gl.enableVertexAttribArray(loc); gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
+  var uR = gl.getUniformLocation(prog, 'r'), uT = gl.getUniformLocation(prog, 't');
+  canvas.parentNode.classList.add('has-gl');
+
+  var raf = 0, t0 = 0, seed = Math.random() * 40;
+  function size(){
+    var dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+    var w = Math.round(canvas.clientWidth * dpr), hgt = Math.round(canvas.clientHeight * dpr);
+    if (w && hgt && (canvas.width !== w || canvas.height !== hgt)) { canvas.width = w; canvas.height = hgt; }
+    gl.viewport(0, 0, canvas.width, canvas.height);
+  }
+  function draw(now){
+    size();
+    gl.uniform2f(uR, canvas.width, canvas.height);
+    gl.uniform1f(uT, seed + (now - t0) / 400); /* ~2.5x real time: visible drift */
+    gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+    if (!still) raf = requestAnimationFrame(draw);
+  }
+  return {
+    start: function(){ if (raf) return; t0 = performance.now(); raf = requestAnimationFrame(draw); },
+    stop: function(){ cancelAnimationFrame(raf); raf = 0; }
+  };
+}

@@ -15,7 +15,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;800&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Caveat:wght@500;600&display=swap">
 <link rel="stylesheet" href="css/styles.css">
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Service","name":"AI Automation & Intelligent Bots","serviceType":"AI Automation","url":"https://tekjee.com/ai-automation.html","provider":{"@type":"Organization","@id":"https://tekjee.com/#organization","name":"TEKJEE","url":"https://tekjee.com/"},"description":"Smart AI agents that handle multi-step workflows, automated scheduling, customer inquiries, and data processing."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is Agentic AI?","acceptedAnswer":{"@type":"Answer","text":"Agentic AI refers to autonomous AI systems capable of executing complex, multi-step actions without constant manual intervention."}},{"@type":"Question","name":"Can AI automation integrate with legacy software?","acceptedAnswer":{"@type":"Answer","text":"Yes. TEKJEE builds custom connectors and API bridges for virtually any modern or legacy business software."}}]}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Service","name":"AI Automation & Intelligent Bots","serviceType":"AI Automation","url":"https://tekjee.com/ai-automation.html","provider":{"@type":"Organization","@id":"https://tekjee.com/#organization","name":"TEKJEE","url":"https://tekjee.com/"},"description":"Smart AI agents that handle multi-step workflows, automated scheduling, customer inquiries, and data processing."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is Agentic AI?","acceptedAnswer":{"@type":"Answer","text":"Agentic AI refers to autonomous AI systems capable of executing complex, multi-step actions without constant manual intervention."}},{"@type":"Question","name":"Can AI automation integrate with legacy software?","acceptedAnswer":{"@type":"Answer","text":"Yes. TEKJEE builds custom connectors and API bridges for virtually any modern or legacy business software."}},{"@type":"Question","name":"Can the AI act as a lawyer or another specialist?","acceptedAnswer":{"@type":"Answer","text":"Yes. TEKJEE AI takes on the role you give it. Tell it to act as a lawyer, upload your files, and it extracts the key information and answers in that role. It can also work as an accountant, recruiter, support agent or any other character your business needs."}}]}]}</script>
 </head>
 <body>
 <header class="nav">
@@ -26,7 +26,17 @@
       TEKJEE
     </a>
     <nav class="nav-links">
-      <a href="index.html#services">Services</a>
+      <a href="index.html">Home</a>
+      <div class="nav-dd">
+        <button class="nav-dd-btn" type="button" aria-expanded="false" aria-controls="navServices">Services <span class="nav-dd-caret" aria-hidden="true">▾</span></button>
+        <div class="nav-dd-menu" id="navServices">
+          <a href="web-development.html">Web Development</a>
+          <a href="camera-monitoring.html">Camera Surveillance &amp; Virtual Management</a>
+          <a href="crm-automation.html">CRM Automation</a>
+          <a href="ai-automation.html">AI Automation</a>
+          <a href="virtual-marketing.html">Digital Marketing</a>
+        </div>
+      </div>
       <a href="index.html#approach">Approach</a>
       <a href="why-tekjee.html">Why TEKJEE</a>
       <a href="index.html#faq">FAQ</a>
@@ -36,12 +46,18 @@
       <svg class="tt-icon tt-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.6M12 18.9v2.6M4.6 4.6l1.85 1.85M17.55 17.55l1.85 1.85M2.5 12h2.6M18.9 12h2.6M4.6 19.4l1.85-1.85M17.55 6.45l1.85-1.85"/></svg>
       <svg class="tt-icon tt-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.2 14.6A8.2 8.2 0 1 1 9.4 3.8a6.6 6.6 0 0 0 10.8 10.8z"/></svg>
     </button>
-    <a class="nav-cta" href="index.html#contact">START A PROJECT →</a>
+    <a class="nav-cta" data-book="project" href="index.html#contact">START A PROJECT →</a>
   </div>
 </header>
 
 <main id="view-ai-automation" style="--accent-page:#8a2bff">
-  <section class="pg-hero" style="--accent-page:#8a2bff">
+  <section class="pg-hero wd-hero" style="--accent-page:#8a2bff">
+    <figure class="wd-hero-video">
+      <video src="assets/ai-hero.mp4" poster="assets/ai-hero-poster.jpg" playsinline preload="auto" aria-label="AI automation at work: an AI agent routing emails and documents, filing them automatically, and a team reviewing an AI dashboard"></video>
+      <div class="wd-endcard" aria-hidden="true">
+        <p><span>Automate.</span> <span>Assist.</span> <span>Scale.</span></p>
+      </div>
+    </figure>
     <div class="wrap">
       <nav class="crumbs" aria-label="Breadcrumb">
         <a href="#">TEKJEE</a><span aria-hidden="true">/</span>
@@ -56,7 +72,7 @@
           <div class="tldr-card pg-reveal"><span class="num">API</span><p>Direct hooks into your existing CRMs, ERPs, communication apps and databases.</p></div>
       </div>
       <div class="hero-actions">
-        <a class="btn btn-primary" href="mailto:support@tekjee.com?subject=AI%20Automation%20%26%20Intelligent%20Bots%20consult">Book a consult</a>
+        <a class="btn btn-primary" data-book="consult" href="mailto:support@tekjee.com?subject=AI%20Automation%20%26%20Intelligent%20Bots%20consult">Book a consult</a>
         <a class="btn btn-ghost" href="#features">See key features ↓</a>
       </div>
     </div>
@@ -77,32 +93,73 @@
     </div>
   </section>
 
-  <section class="pg-section" id="features" style="--accent-page:#8a2bff">
+  <section class="pg-section hs-section hs-violet hs-compact" id="features" style="--accent-page:#8a2bff">
     <div class="wrap">
       <div class="sect-head pg-reveal">
         <span class="eyebrow">Key features</span>
         <h2>What this service includes</h2>
       </div>
-      <div class="pg-grid">
+      <div class="hs-grid">
+        <div class="hs-list" role="tablist" aria-label="AI automation services" aria-orientation="vertical">
+          <button class="hs-title is-active" type="button" role="tab" id="hs-tab-agentic" aria-controls="hs-panel-agentic" aria-selected="true" tabindex="0" data-i="0">AI Agentic Bots</button>
+          <button class="hs-title" type="button" role="tab" id="hs-tab-bots" aria-controls="hs-panel-bots" aria-selected="false" tabindex="-1" data-i="1">AI Chatbots</button>
+          <button class="hs-title" type="button" role="tab" id="hs-tab-virtual-manager" aria-controls="hs-panel-virtual-manager" aria-selected="false" tabindex="-1" data-i="2">Virtual Manager</button>
+          <button class="hs-title" type="button" role="tab" id="hs-tab-workflow" aria-controls="hs-panel-workflow" aria-selected="false" tabindex="-1" data-i="3">AI Workflow Automation</button>
+          <button class="hs-title" type="button" role="tab" id="hs-tab-insights" aria-controls="hs-panel-insights" aria-selected="false" tabindex="-1" data-i="4">Data &amp; Insights</button>
+          <button class="hs-title" type="button" role="tab" id="hs-tab-documents" aria-controls="hs-panel-documents" aria-selected="false" tabindex="-1" data-i="5">Document AI</button>
+          <button class="hs-title" type="button" role="tab" id="hs-tab-integration" aria-controls="hs-panel-integration" aria-selected="false" tabindex="-1" data-i="6">API Integration</button>
+        </div>
+        <div class="hs-media">
+          <div class="hs-frame">
+            <img class="hs-img is-active" src="assets/ai-slides/agentic.jpg" alt="A glowing AI core with tasks such as email, calendar and orders orbiting around it" width="1000" height="800" loading="eager" decoding="async" data-i="0">
+            <img class="hs-img" src="assets/ai-slides/bots.jpg" alt="A smartphone with glowing chat bubbles and a friendly chatbot face" width="1000" height="800" loading="eager" decoding="async" data-i="1">
+            <img class="hs-img" src="assets/ai-slides/virtual-manager.jpg" alt="A holographic businesswoman assigning and checking off team task cards" width="1000" height="800" loading="lazy" decoding="async" data-i="2">
+            <img class="hs-img" src="assets/ai-slides/workflow.jpg" alt="A connected chain of steps from email to document, calendar, payment and a completed check" width="1000" height="800" loading="lazy" decoding="async" data-i="3">
+            <img class="hs-img" src="assets/ai-slides/insights.jpg" alt="Glowing bar charts, a pie chart and a rising arrow" width="1000" height="800" loading="lazy" decoding="async" data-i="4">
+            <img class="hs-img" src="assets/ai-slides/documents.jpg" alt="Paper documents scanned by a beam of light and filed into a folder marked with a check" width="1000" height="800" loading="lazy" decoding="async" data-i="5">
+            <img class="hs-img" src="assets/ai-slides/integration.jpg" alt="A glowing hub wired to apps for payments, shopping, email, calendar, chat and cloud storage" width="1000" height="800" loading="lazy" decoding="async" data-i="6">
+          </div>
+          <div class="hs-caps">
+            <p class="hs-cap is-active" role="tabpanel" id="hs-panel-agentic" aria-labelledby="hs-tab-agentic" data-i="0">Agentic AI bots: intelligent multi-step reasoning and automated task execution, not a single-step script.</p>
+            <p class="hs-cap" role="tabpanel" id="hs-panel-bots" aria-labelledby="hs-tab-bots" data-i="1">Conversational AI chatbots: natural-language resolution for customer inquiries, like the assistant on this site.</p>
+            <p class="hs-cap" role="tabpanel" id="hs-panel-virtual-manager" aria-labelledby="hs-tab-virtual-manager" data-i="2">Virtual Manager: an AI agent built around one job, such as qualifying leads, drafting replies or sorting requests.</p>
+            <p class="hs-cap" role="tabpanel" id="hs-panel-workflow" aria-labelledby="hs-tab-workflow" data-i="3">AI workflow automation: forms, email, CRM and spreadsheets connected so repetitive steps run on their own.</p>
+            <p class="hs-cap" role="tabpanel" id="hs-panel-insights" aria-labelledby="hs-tab-insights" data-i="4">Data and insights: reports and dashboards that turn your business data into clear next steps.</p>
+            <p class="hs-cap" role="tabpanel" id="hs-panel-documents" aria-labelledby="hs-tab-documents" data-i="5">Data extraction and document AI: automated invoice parsing and data validation, without manual re-typing.</p>
+            <p class="hs-cap" role="tabpanel" id="hs-panel-integration" aria-labelledby="hs-tab-integration" data-i="6">Enterprise API integration: connects to Slack, Microsoft Teams, Zapier and your custom internal systems.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="pg-section" id="roles" style="--accent-page:#8a2bff">
+    <div class="wrap">
+      <div class="sect-head pg-reveal">
+        <span class="eyebrow">AI that takes on a role</span>
+        <h2>Tell it who to be. Give it your files. It does the job.</h2>
+        <p>TEKJEE AI adapts to the character you need. Ask it to act as a lawyer, upload your contracts and case files, and it reads them, extracts the key information and answers in that role. The same AI can work as your accountant, recruiter or support agent.</p>
+      </div>
+      <div class="pg-grid pg-grid-2">
         <article class="pg-card accent-page pg-reveal">
-          <div class="pg-icon accent-page"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="8" width="14" height="11" rx="3"/><path d="M12 8V4"/><circle cx="9" cy="13" r="1.3"/><circle cx="15" cy="13" r="1.3"/></svg></div>
-          <h3>Agentic AI workflows</h3>
-          <p>Intelligent multi-step reasoning and automated task execution, not a single-step script.</p>
+          <div class="pg-icon accent-page"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M5 21h14"/><path d="M5 7h14"/><path d="M5 7l-3 6a3 3 0 0 0 6 0zM19 7l-3 6a3 3 0 0 0 6 0z"/></svg></div>
+          <h3>Acts as a lawyer</h3>
+          <p>Reads contracts, agreements and case files, pulls out parties, dates, obligations and risky clauses, and answers your legal questions about them.</p>
         </article>
         <article class="pg-card accent-page pg-reveal">
-          <div class="pg-icon accent-page"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H9l-5 4z"/></svg></div>
-          <h3>Conversational AI bots</h3>
-          <p>Natural-language resolution for customer inquiries, like the assistant on this site.</p>
+          <div class="pg-icon accent-page"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2z"/><path d="M9 8h6M9 12h6"/></svg></div>
+          <h3>Acts as an accountant</h3>
+          <p>Goes through invoices, receipts and statements, extracts amounts, vendors and due dates, and summarises spending.</p>
         </article>
         <article class="pg-card accent-page pg-reveal">
-          <div class="pg-icon accent-page"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h9l4 4v14H6z"/><path d="M14 3v5h5M9 13h7M9 17h7"/></svg></div>
-          <h3>Data extraction &amp; document AI</h3>
-          <p>Automated invoice parsing and data validation, without manual re-typing.</p>
+          <div class="pg-icon accent-page"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"/><path d="M3 20c.8-3.4 3.2-5 6-5s5.2 1.6 6 5"/><path d="M16 11l2 2 3-4"/></svg></div>
+          <h3>Acts as a recruiter</h3>
+          <p>Screens CVs against your job description, lists each candidate&rsquo;s skills and experience, and shortlists the best matches.</p>
         </article>
         <article class="pg-card accent-page pg-reveal">
-          <div class="pg-icon accent-page"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 15l6-6"/><path d="M8 12l-2 2a3.5 3.5 0 0 0 5 5l2-2"/><path d="M16 12l2-2a3.5 3.5 0 0 0-5-5l-2 2"/></svg></div>
-          <h3>Enterprise API integration</h3>
-          <p>Connects to Slack, Microsoft Teams, Zapier and custom internal systems.</p>
+          <div class="pg-icon accent-page"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H9l-5 4z"/><path d="M8 9h8M8 12h5"/></svg></div>
+          <h3>Acts as your support agent</h3>
+          <p>Learns your product guides and policies, then answers customers in your tone and hands complex cases to your team.</p>
         </article>
       </div>
     </div>
@@ -123,6 +180,10 @@
           <h3>Can AI automation integrate with legacy software?</h3>
           <p>Yes. TEKJEE builds custom connectors and API bridges for virtually any modern or legacy business software.</p>
         </article>
+        <article class="faq-item pg-reveal">
+          <h3>Can the AI act as a lawyer or another specialist?</h3>
+          <p>Yes. TEKJEE AI takes on the role you give it. Tell it to act as a lawyer, upload your files, and it extracts the key information and answers in that role. It can also work as an accountant, recruiter, support agent or any other character your business needs.</p>
+        </article>
       </div>
     </div>
   </section>
@@ -133,7 +194,7 @@
         <h2>Ready to talk about ai automation &amp; intelligent bots?</h2>
         <p>Tell TEKJEE about your business. TEKJEE will review where you are today and propose a plan.</p>
         <div class="hero-actions">
-          <a class="btn btn-light" href="mailto:support@tekjee.com?subject=AI%20Automation%20%26%20Intelligent%20Bots%20consult">Book a consult</a>
+          <a class="btn btn-light" data-book="consult" href="mailto:support@tekjee.com?subject=AI%20Automation%20%26%20Intelligent%20Bots%20consult">Book a consult</a>
           <a class="btn btn-outline-light" href="index.html#services">See all services</a>
         </div>
       </div>
@@ -207,5 +268,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="js/particle-morph.js"></script>
 <script src="js/page.js"></script>
+<script src="js/wd-hero-video.js"></script>
+<script src="js/hover-slider.js"></script>
 </body>
 </html>

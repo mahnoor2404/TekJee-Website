@@ -112,6 +112,34 @@
       lw(c, 12); rr(c, -96, -10, 192, 70, 14);
       lw(c, 9); rr(c, -96, -46, 60, 46, 10);
       lw(c, 11); line(c, -104, 60, -104, 96); line(c, 104, 60, 104, 96);
+    },
+    browser: function(c){
+      lw(c, 11); rr(c, -106, -76, 212, 152, 16);
+      lw(c, 8); line(c, -106, -42, 106, -42);
+      dot(c, -84, -59, 6); dot(c, -64, -59, 6); dot(c, -44, -59, 6);
+      lw(c, 11);
+      c.beginPath(); c.moveTo(-26, -14); c.lineTo(-56, 16); c.lineTo(-26, 46); c.stroke();
+      c.beginPath(); c.moveTo(26, -14); c.lineTo(56, 16); c.lineTo(26, 46); c.stroke();
+      lw(c, 9); line(c, 10, -18, -10, 50);
+    },
+    search: function(c){
+      lw(c, 13); circ(c, -18, -18, 62);
+      lw(c, 18); line(c, 26, 26, 86, 86);
+      lw(c, 9);
+      c.beginPath(); c.moveTo(-50, 6); c.lineTo(-28, -18); c.lineTo(-10, -2); c.lineTo(16, -34); c.stroke();
+    },
+    answer: function(c){
+      lw(c, 11);
+      c.beginPath();
+      c.moveTo(-84, -70); c.lineTo(84, -70); c.quadraticCurveTo(100, -70, 100, -54);
+      c.lineTo(100, 30); c.quadraticCurveTo(100, 46, 84, 46);
+      c.lineTo(-20, 46); c.lineTo(-56, 84); c.lineTo(-52, 46);
+      c.lineTo(-84, 46); c.quadraticCurveTo(-100, 46, -100, 30);
+      c.lineTo(-100, -54); c.quadraticCurveTo(-100, -70, -84, -70); c.closePath(); c.stroke();
+      /* four-point AI spark inside the bubble */
+      c.beginPath();
+      c.moveTo(0, -46); c.quadraticCurveTo(6, -18, 32, -12); c.quadraticCurveTo(6, -6, 0, 22);
+      c.quadraticCurveTo(-6, -6, -32, -12); c.quadraticCurveTo(-6, -18, 0, -46); c.closePath(); c.fill();
     }
   };
 
