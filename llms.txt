@@ -6,20 +6,24 @@ TEKJEE provides real-time, proactive video surveillance, AI workflow automation,
 
 ## Core Services
 
-- [Digital Marketing](https://tekjee.com/virtual-marketing.html): GEO (Generative Engine Optimization) first, plus SEO and Local SEO, social media marketing, paid ads on every social platform, branding and graphic design, for businesses without an in-house marketing team.
-- [Virtual Camera Monitoring](https://tekjee.com/camera-monitoring.html): 24/7 live and remote video surveillance, AI video monitoring, motion alerts, and secure cloud or NVR storage, with emergency dispatch.
-- [AI Automation & Agentic AI](https://tekjee.com/ai-automation.html): Custom AI bots, a Virtual Manager, autonomous business agents, and AI workflow automation.
-- [CRM Automation](https://tekjee.com/crm-automation.html): CRM workflow automation, automated lead capture, automated multi-channel follow-ups, and sales pipeline optimization.
-- [Back Office Support](https://tekjee.com/camera-monitoring.html#back-office): Part of Camera Surveillance & Virtual Management. Remote administration, transaction reconciliation, bookkeeping, data entry and scalable outsourced operational support, run by the same team that monitors your cameras.
-- [Web Development](https://tekjee.com/web-development.html): SEO and GEO-ready website development — custom business websites, e-commerce stores, landing pages and web apps with technical SEO, Local SEO, schema markup and Generative Engine Optimization built in.
+- [Digital Marketing Agency](https://tekjee.com/virtual-marketing.html): B2B digital marketing agency for small business in the USA and UK. Generative engine optimization (GEO) and AI search optimization first, plus SEO and Local SEO, social media marketing, paid ads on every social platform, branding and graphic design, for businesses without an in-house marketing team.
+- [Commercial Security Cameras & Video Monitoring](https://tekjee.com/camera-monitoring.html): commercial security camera systems with installation, 24/7 live and remote video monitoring, virtual security guard services with two-way voice talk-down, CCTV monitoring, business alarm video verification, cloud storage and emergency dispatch.
+- [AI Automation Agency](https://tekjee.com/ai-automation.html): custom AI bots for business and customer service, agentic AI workflows, enterprise AI automation services, a Virtual Manager, and AI automation for logistics, retail, restaurants and hospitality, with measurable ROI within 60 days.
+- [CRM Automation Services](https://tekjee.com/crm-automation.html): CRM workflow automation, automated lead follow-up within 2 minutes, sales pipeline automation, lead management automation, and HubSpot, GoHighLevel, Zoho and Salesforce automation.
+- [Back Office Support](https://tekjee.com/camera-monitoring.html#back-office): Part of Camera Surveillance & Virtual Management. Back office support services and outsourcing: transaction reconciliation, back office bookkeeping (QuickBooks and Xero), payroll, data entry and virtual back office assistants aligned with US and UK business hours at up to 60% lower cost, run by the same team that monitors your cameras.
+- [Web Design & Development](https://tekjee.com/web-development.html): SEO and GEO-ready website development — custom business websites, e-commerce stores, landing pages and web apps with technical SEO, Local SEO, schema markup and Generative Engine Optimization built in.
 - SEO & GEO: Local SEO, Technical SEO, and Generative Engine Optimization (GEO) so a business ranks on Google and is cited by AI assistants such as ChatGPT, Gemini and Perplexity.
 
 ## Target Industries
-- Gas Stations & Convenience Stores
-- Commercial Warehouses & Logistics Hubs
-- Retail Stores & Shopping Plazas
-- Restaurants & Fast-Food Chains
-- Hotels & Motels
+- [Gas Stations & Convenience Stores](https://tekjee.com/gas-stations.html): gas station security cameras and CCTV monitoring
+- [Commercial Warehouses & Logistics Hubs](https://tekjee.com/warehouses.html): warehouse security camera systems and logistics video monitoring
+- [Retail Stores & Shopping Plazas](https://tekjee.com/retail.html): retail store security cameras and loss prevention
+- [Restaurants & Fast-Food Chains](https://tekjee.com/restaurants.html): restaurant security camera systems and CCTV surveillance
+- [Hotels & Motels](https://tekjee.com/hotels-motels.html): hotel and motel security camera systems
+
+## Locations Served
+- United States: Dallas, Houston, Austin (Texas); Miami, Orlando, Tampa (Florida); New York, NY; Los Angeles, CA
+- United Kingdom: London, Manchester, Birmingham
 
 ## Key Performance Metrics
 - **Emergency Dispatch Time:** Under 60 seconds

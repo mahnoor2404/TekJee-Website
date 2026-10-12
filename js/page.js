@@ -370,19 +370,24 @@
   if (!triggers.length) return;
 
   var SERVICES = [
-    'Web Development',
     'Camera Surveillance & Virtual Management',
-    'CRM Automation',
     'AI Automation',
+    'Web Design & Development',
+    'CRM Automation',
     'Digital Marketing'
   ];
   /* preselect the service that matches the page the visitor is on */
   var PAGE_SERVICE = {
-    'camera-monitoring': 1, 'gas-stations': 1, 'hotels-motels': 1, 'restaurants': 1, 'retail': 1, 'warehouses': 1,
-    'web-development': 0, 'crm-automation': 2, 'ai-automation': 3, 'virtual-marketing': 4
+    'camera-monitoring': 0, 'gas-stations': 0, 'hotels-motels': 0, 'restaurants': 0, 'retail': 0, 'warehouses': 0,
+    'ai-automation': 1, 'web-development': 2, 'crm-automation': 3, 'virtual-marketing': 4
   };
   var page = (location.pathname.split('/').pop() || '').replace(/\.html$/, '');
   var EMAIL = 'support@tekjee.com';
+  /* booking requests are emailed by FormSubmit (formsubmit.co) to FORM_TO, with a copy to FORM_CC.
+     A form on a new address or domain must be activated once from the email FormSubmit sends to FORM_TO
+     on its first request; that email also gives a random alias that can replace the address in the URL. */
+  var FORM_ENDPOINT = 'https://formsubmit.co/ajax/ibrahimqadir35@gmail.com';
+  var FORM_CC = 'ibrahimqadir@tekjee.com';
 
   var overlay = document.createElement('div');
   overlay.className = 'book-overlay';
@@ -405,11 +410,12 @@
         '<div class="book-field"><label for="bookName">Full name</label>' +
           '<input id="bookName" name="name" type="text" autocomplete="name" required maxlength="100">' +
           '<span class="book-err" id="bookNameErr"></span></div>' +
+        '<p class="book-hint" id="bookContactHint">Give us your email or phone number (at least one).</p>' +
         '<div class="book-field"><label for="bookEmail">Email address</label>' +
-          '<input id="bookEmail" name="email" type="email" autocomplete="email" required maxlength="150">' +
+          '<input id="bookEmail" name="email" type="email" autocomplete="email" maxlength="150" aria-describedby="bookContactHint">' +
           '<span class="book-err" id="bookEmailErr"></span></div>' +
         '<div class="book-field"><label for="bookPhone">Phone number</label>' +
-          '<input id="bookPhone" name="phone" type="tel" autocomplete="tel" required maxlength="30">' +
+          '<input id="bookPhone" name="phone" type="tel" autocomplete="tel" maxlength="30" aria-describedby="bookContactHint">' +
           '<span class="book-err" id="bookPhoneErr"></span></div>' +
         '<div class="book-field"><label for="bookService">Service</label>' +
           '<select id="bookService" name="service" required>' +
@@ -417,14 +423,16 @@
             SERVICES.map(function(s){ return '<option>' + s.replace(/&/g, '&amp;') + '</option>'; }).join('') +
           '</select>' +
           '<span class="book-err" id="bookServiceErr"></span></div>' +
-        '<button class="btn btn-primary" type="submit">Submit request</button>' +
-        '<p class="book-note">Submitting opens your email app with your details filled in, ready to send to ' + EMAIL + '.</p>' +
+        '<input class="book-honey" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">' +
+        '<button class="btn btn-primary book-submit" type="submit">Submit request</button>' +
+        '<p class="book-err book-send-err" role="alert"></p>' +
+        '<p class="book-note">Your request goes straight to the TEKJEE team.</p>' +
       '</form>' +
       '<div class="book-done" hidden>' +
         '<div class="book-tick" aria-hidden="true">✓</div>' +
-        '<h2>Thanks — almost done</h2>' +
-        '<p>Send the email that just opened and TEKJEE will get back to you within one business day. ' +
-        'If no email app opened, write to <a href="mailto:' + EMAIL + '">' + EMAIL + '</a> or call +1 (646) 934-8855.</p>' +
+        '<h2>Thanks — request received</h2>' +
+        '<p>TEKJEE will get back to you within one business day. ' +
+        'Need us sooner? Write to <a href="mailto:' + EMAIL + '">' + EMAIL + '</a> or call +1 (646) 934-8855.</p>' +
         '<button class="btn btn-ghost book-done-close" type="button">Close</button>' +
       '</div>' +
       '</div>' +
@@ -481,9 +489,13 @@
     else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
   });
 
+  /* email and phone are each optional, but at least one of them is needed */
   function check(key){
     var el = fields[key], v = el.value.trim(), msg = '';
-    if (!v) msg = 'This field is required.';
+    if (!v && (key === 'email' || key === 'phone')) {
+      if (!fields.email.value.trim() && !fields.phone.value.trim()) msg = 'Enter an email or a phone number.';
+    }
+    else if (!v) msg = 'This field is required.';
     else if (key === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) msg = 'Enter a valid email address.';
     else if (key === 'phone' && v.replace(/\D/g, '').length < 7) msg = 'Enter a valid phone number.';
     else if (key === 'service' && SERVICES.indexOf(v) < 0) msg = 'Choose a service.';
@@ -494,21 +506,54 @@
     return !msg;
   }
   Object.keys(fields).forEach(function(k){
-    fields[k].addEventListener(k === 'service' ? 'change' : 'blur', function(){ if (fields[k].value) check(k); });
+    fields[k].addEventListener(k === 'service' ? 'change' : 'blur', function(){
+      if (fields[k].value) check(k);
+      /* filling one contact field clears the "email or phone" error on the other */
+      if ((k === 'email' || k === 'phone') && fields[k].value.trim()) check(k === 'email' ? 'phone' : 'email');
+    });
   });
+
+  var submitBtn = form.querySelector('.book-submit');
+  var sendErr = form.querySelector('.book-send-err');
+  var honey = form.querySelector('.book-honey');
 
   form.addEventListener('submit', function(e){
     e.preventDefault();
+    sendErr.textContent = '';
     var bad = Object.keys(fields).filter(function(k){ return !check(k); });
     if (bad.length) { fields[bad[0]].focus(); return; }
     var d = {};
     Object.keys(fields).forEach(function(k){ d[k] = fields[k].value.trim(); });
-    var subject = title.textContent + ': ' + d.service;
-    var body = 'Full name: ' + d.name + '\nEmail: ' + d.email + '\nPhone: ' + d.phone + '\nService: ' + d.service + '\n';
-    location.href = 'mailto:' + EMAIL + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
-    form.reset();
-    form.hidden = true; done.hidden = false;
-    done.querySelector('.book-done-close').focus();
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending…';
+    fetch(FORM_ENDPOINT, {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
+      body: JSON.stringify({
+        _subject: 'New booking request: ' + d.name + ' wants ' + d.service,
+        _template: 'table',
+        _cc: FORM_CC,
+        _honey: honey.value,
+        'Request': d.name + ' has requested "' + title.textContent + '" for ' + d.service + '.',
+        'Request type': title.textContent,
+        'Full name': d.name,
+        'Email': d.email || '(not given)',
+        'Phone': d.phone || '(not given)',
+        'Service': d.service,
+        'Sent from page': location.href
+      })
+    }).then(function(res){
+      return res.json().then(function(j){ if (!res.ok || String(j.success) !== 'true') throw new Error(j.message || 'Send failed'); });
+    }).then(function(){
+      form.reset();
+      form.hidden = true; done.hidden = false;
+      done.querySelector('.book-done-close').focus();
+    }).catch(function(){
+      sendErr.innerHTML = 'Sorry, your request could not be sent. Please try again, or email <a href="mailto:' + EMAIL + '">' + EMAIL + '</a>.';
+    }).then(function(){
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Submit request';
+    });
   });
 })();
 

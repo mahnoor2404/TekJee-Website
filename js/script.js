@@ -1,6 +1,6 @@
 /* ---- hero video: plays on its own, independent of scroll (and of GSAP).
-   Cycle: intro clip -> office clip, both with sound and no text on top;
-   when the office clip ends the TEKJEE text fades in over its last frame,
+   Cycle: the hero clip (#heroVideo, plus an optional second clip #heroVideo2) plays with sound and no text on top;
+   when the last clip ends the TEKJEE text fades in over its last frame,
    stays for 3 seconds, then hides again and the cycle restarts. ---- */
 (function(){
   var hero = document.querySelector('.video-hero');

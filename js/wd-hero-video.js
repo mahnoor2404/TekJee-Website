@@ -73,3 +73,16 @@
     }
   });
 })();
+
+/* Camera page video (plays with its own controls): when it ends, the end card with the still image and text
+   shows over it; clicking the card or playing the video again hides it. */
+(function(){
+  Array.prototype.forEach.call(document.querySelectorAll('.cam-hero-video video'), function(video){
+    var frame = video.closest('.cam-hero-video');
+    var card = frame.querySelector('.wd-endcard');
+    if (!card) return;
+    video.addEventListener('ended', function(){ frame.classList.add('show-end'); });
+    video.addEventListener('play', function(){ frame.classList.remove('show-end'); });
+    card.addEventListener('click', function(){ video.currentTime = 0; video.play(); });
+  });
+})();
