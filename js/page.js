@@ -254,7 +254,7 @@
     {id:'web', kw:['website','websites','web','web development','development','developer','app','apps','design','wordpress','site','landing page','ecommerce','e commerce','store'],
      text:'TEKJEE designs and builds fast, responsive, custom websites and web apps in-house, made for lead generation and online sales, with speed and technical SEO built in.', links:['services']},
     {id:'back', kw:['back office','back office support','back office support services','back office outsourcing','virtual back office','virtual back office services','administrative support','admin','administration','data entry','scheduling','invoicing','invoices','paperwork','follow ups','follow up','outsourcing'],
-     text:'TEKJEE’s back office support is part of Camera Surveillance & Virtual Management: the same team reconciles transactions, keeps your books, handles data entry and admin, and coordinates vendors.', links:['backoffice']},
+     text:'TEKJEE’s back office support is part of Camera Surveillance & Back Office Support: the same team reconciles transactions, keeps your books, handles data entry and admin, and coordinates vendors.', links:['backoffice']},
     {id:'crm', kw:['crm','crm automation','crm workflow automation','sales automation','lead follow-up automation','lead follow up automation','automated lead management','zoho','zoho crm','salesforce','deploy','existing solution','customer management','leads','lead','pipeline','pipelines','customer records','customers','sales pipeline'],
      text:'TEKJEE sets up CRM Automation, including automation for companies on Zoho and Salesforce: CRM workflow automation, sales automation and lead follow-up automation. TEKJEE can also deploy existing CRM solutions you already have.', links:['crm']},
     {id:'camera', kw:['camera','cameras','camera monitoring','virtual camera monitoring','live camera monitoring','live camera surveillance','remote camera monitoring','remote video surveillance','commercial camera monitoring','business security camera monitoring','ai video monitoring','gas station camera monitoring','retail store camera monitoring','warehouse camera monitoring','restaurant camera monitoring','hotel camera monitoring','motel camera monitoring','surveillance','cctv','security','monitoring','nvr','24/7','247','alarm','footage'],
@@ -406,7 +406,8 @@
   if (!triggers.length) return;
 
   var SERVICES = [
-    'Camera Surveillance & Virtual Management',
+    'Camera Surveillance & Back Office Support',
+    'Virtual Management',
     'AI Automation',
     'Web Design & Development',
     'CRM Automation',
@@ -415,7 +416,7 @@
   /* preselect the service that matches the page the visitor is on */
   var PAGE_SERVICE = {
     'camera-monitoring': 0, 'gas-stations': 0, 'hotels-motels': 0, 'restaurants': 0, 'retail': 0, 'warehouses': 0,
-    'ai-automation': 1, 'web-development': 2, 'crm-automation': 3, 'virtual-marketing': 4
+    'virtual-manager': 1, 'ai-automation': 2, 'web-development': 3, 'crm-automation': 4, 'virtual-marketing': 5
   };
   var page = (location.pathname.split('/').pop() || '').replace(/\.html$/, '');
   var EMAIL = 'support@tekjee.com';

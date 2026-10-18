@@ -19,7 +19,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;800&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Caveat:wght@500;600&display=swap" media="print" onload="this.media='all'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;800&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Caveat:wght@500;600&display=swap"></noscript>
 <link rel="stylesheet" href="css/styles.css">
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Service","name":"Virtual Manager for Business Operations & Remote Facility Management","serviceType":"Remote Facility Operations & Virtual Manager Services","url":"https://tekjee.com/virtual-manager.html","provider":{"@type":"Organization","@id":"https://tekjee.com/#organization","name":"TEKJEE","url":"https://tekjee.com/"},"areaServed":["US","UK"],"description":"Camera-assisted virtual manager conducting daily store opening audits, cleanliness checklists, register reconciliation, and remote facility oversight."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What are the benefits of remote facility management and virtual inspection services for multi site retail?","acceptedAnswer":{"@type":"Answer","text":"Remote facility management allows owners of multiple retail stores or gas stations to audit cleanliness, staff presence, inventory restocking, and safety protocols daily without traveling to every store physically."}},{"@type":"Question","name":"How does a virtual manager assist retail and gas station owners in daily operational oversight?","acceptedAnswer":{"@type":"Answer","text":"A TEKJEE Virtual Manager performs camera-assisted shift audits, verifies cash drawer balances against POS totals, audits clock-ins, checks stock levels, and sends a daily summary report via WhatsApp or email."}}]}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Service","name":"Virtual Manager for Business Operations & Remote Facility Management","serviceType":"Remote Facility Operations & Virtual Manager Services","url":"https://tekjee.com/virtual-manager.html","provider":{"@type":"Organization","@id":"https://tekjee.com/#organization","name":"TEKJEE","url":"https://tekjee.com/"},"areaServed":["US","UK"],"description":"Camera-assisted virtual manager conducting daily store opening audits, cleanliness checklists, register reconciliation, and remote facility oversight."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What are the benefits of remote facility management and virtual inspection services for multi site retail?","acceptedAnswer":{"@type":"Answer","text":"Remote facility management allows owners of multiple retail stores or gas stations to audit cleanliness, staff presence, inventory restocking, and safety protocols daily without traveling to every store physically."}},{"@type":"Question","name":"How does a virtual manager assist retail and gas station owners in daily operational oversight?","acceptedAnswer":{"@type":"Answer","text":"A TEKJEE Virtual Manager performs camera-assisted shift audits, verifies cash drawer balances against POS totals, audits clock-ins, checks stock levels, and sends a daily summary report via WhatsApp or email."}}]},{"@type":"VideoObject","name":"TEKJEE Virtual Camera Monitoring","description":"A 57-second TEKJEE video on live camera monitoring for businesses: counter, cash register and employee monitoring, theft alerts, stock re-fill alerts and real-time reports.","thumbnailUrl":"https://tekjee.com/assets/vm-poster.jpg","contentUrl":"https://tekjee.com/assets/vm-video.mp4","uploadDate":"2026-09-26","duration":"PT57S","publisher":{"@type":"Organization","@id":"https://tekjee.com/#organization","name":"TEKJEE","url":"https://tekjee.com/"}}]}</script>
 </head>
 <body>
 <header class="nav">
@@ -34,7 +34,8 @@
       <div class="nav-dd">
         <button class="nav-dd-btn" type="button" aria-expanded="false" aria-controls="navServices">Services <span class="nav-dd-caret" aria-hidden="true">▾</span></button>
         <div class="nav-dd-menu" id="navServices">
-          <a href="camera-monitoring.html">Camera Surveillance &amp; Virtual Management</a>
+          <a href="camera-monitoring.html">Camera Surveillance &amp; Back Office Support</a>
+          <a href="virtual-manager.html">Virtual Management</a>
           <a href="ai-automation.html">AI Automation</a>
           <a href="web-development.html">Web Design &amp; Development</a>
           <a href="crm-automation.html">CRM Automation</a>
@@ -57,6 +58,13 @@
 <main id="view-virtual-manager" style="--accent-page:#8a2bff">
   <section class="pg-hero" style="--accent-page:#8a2bff">
     <div class="wrap">
+      <div class="video-frame cam-hero-video">
+        <video class="vm-video" controls preload="none" playsinline poster="assets/vm-poster.jpg" src="assets/vm-video.mp4" aria-label="TEKJEE camera monitoring video, 57 seconds"></video>
+        <div class="wd-endcard" aria-hidden="true">
+          <img class="wd-end-img" src="assets/endcards/camera.jpg" alt="" width="1920" height="1072" loading="lazy" decoding="async">
+          <p><span>Watch.</span> <span>Protect.</span> <span>Report.</span></p>
+        </div>
+      </div>
       <nav class="crumbs" aria-label="Breadcrumb">
         <a href="index.html">TEKJEE</a><span aria-hidden="true">/</span>
         <a href="camera-monitoring.html">Camera Surveillance</a><span aria-hidden="true">/</span>
@@ -149,5 +157,6 @@
   </div>
 </footer>
 <script src="js/page.js"></script>
+<script src="js/wd-hero-video.js"></script>
 </body>
 </html>
