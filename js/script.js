@@ -279,7 +279,15 @@
       out.sort(function(a, b){ return Math.atan2(a.y, a.x) - Math.atan2(b.y, b.x); });
       return out;
     }
-    var shapes = [sample(drawMkt), sample(drawAI), sample(drawWeb), sample(drawBack), sample(drawCRM), sample(drawSEO), sample(drawCam)];
+    /* the shapes are only needed once the globe starts morphing, so they are sampled when the browser is idle
+       (or on the first morph if that comes sooner) instead of during page load */
+    var shapes = null;
+    function getShapes(){
+      if (!shapes) shapes = [sample(drawMkt), sample(drawAI), sample(drawWeb), sample(drawBack), sample(drawCRM), sample(drawSEO), sample(drawCam)];
+      return shapes;
+    }
+    if ('requestIdleCallback' in window) window.requestIdleCallback(getShapes, {timeout: 4000});
+    else setTimeout(getShapes, 1500);
 
     /* ---- particles: start as a globe (Fibonacci sphere) ---- */
     var cx = new Float32Array(N), cy = new Float32Array(N), cz = new Float32Array(N);
@@ -330,7 +338,8 @@
     }
 
     globe.morphTo = function(idx, done){
-      var tgt = shapes[((idx % shapes.length) + shapes.length) % shapes.length];
+      var all = getShapes();
+      var tgt = all[((idx % all.length) + all.length) % all.length];
       var order = [];
       for (var i = 0; i < N; i++){
         fx[i] = cx[i]; fy[i] = cy[i]; fz[i] = cz[i];
@@ -623,6 +632,7 @@
       var clone = card.cloneNode(true);
       clone.setAttribute('aria-hidden', 'true');
       clone.querySelectorAll('[id]').forEach(function(el){ el.removeAttribute('id'); });
+      clone.querySelectorAll('a, button, input, select, textarea, [tabindex]').forEach(function(el){ el.setAttribute('tabindex', '-1'); });
       track.appendChild(clone);
     });
 

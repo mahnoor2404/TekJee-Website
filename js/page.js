@@ -57,6 +57,7 @@
     originalCards.forEach(function(card){
       var clone = card.cloneNode(true);
       clone.setAttribute('aria-hidden', 'true');
+      clone.querySelectorAll('a, button, input, select, textarea, [tabindex]').forEach(function(el){ el.setAttribute('tabindex', '-1'); });
       track.appendChild(clone);
     });
     var cards = gsap.utils.toArray(track.querySelectorAll('.service-card'));
@@ -450,9 +451,11 @@
     service: form.querySelector('#bookService')
   };
   var lastFocus = null;
-  var art = grainGradient(overlay.querySelector('.book-art-canvas'));
+  /* the WebGL background is set up on first open, not on page load (shader compiling is slow on phones) */
+  var art = null;
 
   function open(kind){
+    if (!art) art = grainGradient(overlay.querySelector('.book-art-canvas'));
     lastFocus = document.activeElement;
     title.textContent = kind === 'project' ? 'Start a project' : kind === 'demo' ? 'Book a demo' : 'Book a consult';
     form.hidden = false; done.hidden = true;
@@ -464,7 +467,7 @@
     fields.name.focus();
   }
   function close(){
-    art.stop();
+    if (art) art.stop();
     overlay.classList.remove('show');
     overlay.hidden = true;
     document.body.classList.remove('book-lock');
