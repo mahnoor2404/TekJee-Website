@@ -1750,6 +1750,19 @@
   @keyframes xs-only1{0%{opacity:0;transform:translateY(8px);}5%,24%{opacity:1;transform:none;}29%,100%{opacity:0;transform:none;}}
   @keyframes xs-hide4{0%,75%{opacity:1;}78%,95%{opacity:0;}100%{opacity:1;}}
 
+  /* Virtual Management: the shutter rolls up at opening, each camera feed is ringed while it is being checked,
+     and the manager's progress bar fills over the day */
+  .xs .a-pop1l{animation:xs-pop1l 10s cubic-bezier(.3,1.5,.5,1) infinite both;}
+  .xs .a-only2{animation:xs-only2 10s ease-out infinite both;}
+  .xs .a-only3{animation:xs-only3 10s ease-out infinite both;}
+  .xs .vm-shutter{transform-origin:center top;animation:xs-vm-shutter 10s ease-in-out infinite both;}
+  .xs .vm-progress{transform-origin:left center;animation:xs-vm-progress 10s linear infinite both;}
+  @keyframes xs-pop1l{0%,12%{opacity:0;transform:scale(.3);}17%,94%{opacity:1;transform:none;}100%{opacity:0;}}
+  @keyframes xs-only2{0%,25%{opacity:0;}29%,49%{opacity:1;}53%,100%{opacity:0;}}
+  @keyframes xs-only3{0%,50%{opacity:0;}54%,74%{opacity:1;}78%,100%{opacity:0;}}
+  @keyframes xs-vm-shutter{0%,3%{transform:none;}14%,95%{transform:scaleY(0);}100%{transform:none;}}
+  @keyframes xs-vm-progress{0%{transform:scaleX(.04);}75%,95%{transform:none;}100%{transform:scaleX(.04);}}
+
   /* wide scenes keep a readable size on phones and scroll sideways instead of shrinking */
   .xs-scroll{overflow-x:auto;scrollbar-width:thin;border-radius:16px;}
   .xs-scroll:focus-visible{outline:2px solid var(--xs-accent);outline-offset:2px;}
@@ -1762,5 +1775,5 @@
   }
   @media (prefers-reduced-motion: reduce){
     .xs *, .xs svg *{animation:none !important;}
-    .xs .wd-wire, .xs .wd-query, .xs .wd-dots, .xs .a-hide4{display:none;}
+    .xs .wd-wire, .xs .wd-query, .xs .wd-dots, .xs .a-hide4, .xs .vm-shutter{display:none;}
   }
