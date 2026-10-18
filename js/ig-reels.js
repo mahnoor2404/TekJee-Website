@@ -59,10 +59,20 @@
     return true;
   }
 
-  if (window.fetch) {
+  /* the feed is fetched when the gallery gets near the screen (it sits far down the page), so it doesn't
+     compete with the first paint; the cards already in the page show until it arrives */
+  function loadFeed(){
     fetch(FEED_URL).then(function(res){ return res.ok ? res.json() : null; })
       .then(function(feed){ if (feed && feed.posts) render(feed.posts); })
       .catch(function(){ /* keep the reels already in the page */ });
+  }
+  if (window.fetch) {
+    if ('IntersectionObserver' in window) {
+      var feedIo = new IntersectionObserver(function(entries){
+        if (entries[0].isIntersecting) { feedIo.disconnect(); loadFeed(); }
+      }, {rootMargin: '1200px 0px'});
+      feedIo.observe(section);
+    } else loadFeed();
   }
 
   /* intro lines fade up one after another when the heading comes into view */
