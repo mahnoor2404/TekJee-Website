@@ -1738,6 +1738,18 @@
   @keyframes xs-crm-buzz{0%,66%{transform:none;}67%{transform:rotate(-6deg);}68%{transform:rotate(6deg);}69%{transform:rotate(-6deg);}70%{transform:rotate(6deg);}71%,100%{transform:none;}}
   @keyframes xs-crm-fill{0%,2%{transform:scaleX(0);}10%,94%{transform:none;}100%{transform:scaleX(0);}}
 
+  /* Camera surveillance: the camera sweeps the aisle; an item is pocketed, then put back after the talk-down */
+  .xs .cam-sweep{transform-box:view-box;transform-origin:288px 40px;animation:xs-cam-sweep 3.2s ease-in-out infinite alternate;}
+  .xs .a-rec{animation:xs-rec 1.2s steps(2) infinite;}
+  .xs .cam-grab{animation:xs-cam-grab 10s ease-in-out infinite both;}
+  .xs .a-hide4{animation:xs-hide4 10s ease-out infinite both;}
+  @keyframes xs-cam-sweep{from{transform:rotate(-7deg);}to{transform:rotate(9deg);}}
+  @keyframes xs-rec{50%{opacity:.15;}}
+  @keyframes xs-cam-grab{0%,30%{transform:none;}42%,84%{transform:translate(var(--dx),var(--dy)) scale(.75);}94%,100%{transform:none;}}
+  .xs .a-only1{animation:xs-only1 10s ease-out infinite both;}
+  @keyframes xs-only1{0%{opacity:0;transform:translateY(8px);}5%,24%{opacity:1;transform:none;}29%,100%{opacity:0;transform:none;}}
+  @keyframes xs-hide4{0%,75%{opacity:1;}78%,95%{opacity:0;}100%{opacity:1;}}
+
   /* wide scenes keep a readable size on phones and scroll sideways instead of shrinking */
   .xs-scroll{overflow-x:auto;scrollbar-width:thin;border-radius:16px;}
   .xs-scroll:focus-visible{outline:2px solid var(--xs-accent);outline-offset:2px;}
@@ -1750,5 +1762,5 @@
   }
   @media (prefers-reduced-motion: reduce){
     .xs *, .xs svg *{animation:none !important;}
-    .xs .wd-wire, .xs .wd-query, .xs .wd-dots{display:none;}
+    .xs .wd-wire, .xs .wd-query, .xs .wd-dots, .xs .a-hide4{display:none;}
   }

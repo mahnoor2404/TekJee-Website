@@ -135,7 +135,109 @@
           <li>AI motion filtering that cuts false alerts</li>
         </ul>
       </div>
-      <aside class="pg-panel pg-reveal" aria-label="Surveillance benefits">
+      <div class="pg-reveal">
+      <figure class="xs" style="margin-top:0;--xs-accent:#16a34a">
+        <svg viewBox="0 0 480 340" role="img" aria-label="How 24/7 camera monitoring works: your cameras record the store, someone pockets an item, the TEKJEE monitoring team spots it and talks to them through the speaker, the item is put back and you get an alert on your phone.">
+          <rect class="s-bg" x="0" y="0" width="480" height="340" rx="16"/>
+
+          <!-- the store -->
+          <rect class="s-card" x="12" y="12" width="290" height="226" rx="12"/>
+          <rect class="s-line" x="13" y="212" width="288" height="2"/>
+          <rect x="24" y="24" width="46" height="16" rx="8" fill="#0c2340"/>
+          <circle class="a-rec" cx="35" cy="32" r="3.5" fill="#ef4444"/>
+          <text x="43" y="35.5" font-size="8" font-weight="700" fill="#fff" font-family="JetBrains Mono, Consolas, monospace">REC</text>
+          <g>
+            <rect class="s-card" x="28" y="108" width="94" height="104" rx="4"/>
+            <rect class="s-line" x="28" y="140" width="94" height="3"/><rect class="s-line" x="28" y="174" width="94" height="3"/>
+            <rect x="34" y="118" width="14" height="22" rx="2" fill="#ff7a00"/><rect x="52" y="122" width="14" height="18" rx="2" fill="#0a2fd6"/><rect x="70" y="118" width="14" height="22" rx="2" fill="#16a34a"/><rect x="88" y="124" width="14" height="16" rx="2" fill="#ff2fa0"/><rect x="106" y="120" width="10" height="20" rx="2" fill="#febc2e"/>
+            <rect x="34" y="154" width="18" height="20" rx="2" fill="#8a2bff"/><rect x="56" y="156" width="14" height="18" rx="2" fill="#ff7a00"/><rect x="74" y="152" width="14" height="22" rx="2" fill="#0a2fd6"/><rect x="92" y="156" width="22" height="18" rx="2" fill="#16a34a"/>
+            <rect x="34" y="188" width="14" height="24" rx="2" fill="#febc2e"/><rect x="52" y="190" width="22" height="22" rx="2" fill="#ff2fa0"/><rect x="78" y="188" width="14" height="24" rx="2" fill="#0a2fd6"/><rect x="96" y="192" width="18" height="20" rx="2" fill="#ff7a00"/>
+          </g>
+          <g>
+            <rect class="s-card" x="190" y="108" width="94" height="104" rx="4"/>
+            <rect class="s-line" x="190" y="140" width="94" height="3"/><rect class="s-line" x="190" y="174" width="94" height="3"/>
+            <rect x="196" y="120" width="14" height="20" rx="2" fill="#16a34a"/><rect x="214" y="118" width="14" height="22" rx="2" fill="#ff7a00"/><rect x="232" y="122" width="18" height="18" rx="2" fill="#8a2bff"/><rect x="254" y="118" width="14" height="22" rx="2" fill="#0a2fd6"/>
+            <rect x="218" y="154" width="14" height="20" rx="2" fill="#febc2e"/><rect x="236" y="152" width="14" height="22" rx="2" fill="#16a34a"/><rect x="254" y="156" width="22" height="18" rx="2" fill="#ff7a00"/>
+            <rect x="196" y="190" width="18" height="22" rx="2" fill="#0a2fd6"/><rect x="218" y="188" width="14" height="24" rx="2" fill="#ff2fa0"/><rect x="236" y="192" width="22" height="20" rx="2" fill="#febc2e"/><rect x="262" y="188" width="14" height="24" rx="2" fill="#16a34a"/>
+            <rect class="cam-grab" x="198" y="154" width="14" height="20" rx="2" fill="#ff2fa0" style="--dx:-38px;--dy:16px"/>
+          </g>
+
+          <!-- the shopper (highlighted once something looks wrong) -->
+          <rect x="146" y="188" width="8" height="24" rx="3" fill="#1c2c4c"/><rect x="158" y="188" width="8" height="24" rx="3" fill="#1c2c4c"/>
+          <rect x="142" y="150" width="28" height="42" rx="11" fill="#6b7280"/>
+          <circle cx="156" cy="138" r="12" fill="#c98a5e"/>
+          <path d="M143 140 a13 13 0 0 1 26 0 v-2 a13 14 0 0 0 -26 0z" fill="#4b5563"/>
+          <path d="M142 136 C142 120 170 120 170 136 C164 128 148 128 142 136Z" fill="#4b5563"/>
+          <g class="a-pop2">
+            <rect x="132" y="118" width="48" height="100" rx="8" fill="none" stroke="#ef4444" stroke-width="2.5" stroke-dasharray="6 4"/>
+            <circle cx="180" cy="118" r="9" fill="#ef4444"/>
+            <text x="180" y="122" font-size="12" font-weight="800" fill="#fff" text-anchor="middle" font-family="Manrope, Segoe UI, sans-serif">!</text>
+          </g>
+
+          <!-- the camera and its view -->
+          <rect x="286" y="22" width="6" height="16" rx="2" fill="#5c7ea3"/>
+          <g class="cam-sweep">
+            <polygon points="250,42 112,212 214,212" fill="#16a34a" opacity=".13"/>
+            <rect x="252" y="32" width="38" height="17" rx="5" fill="#e5e7eb" stroke="#94a3b8" stroke-width="1.5"/>
+            <circle cx="254" cy="40.5" r="6.5" fill="#0c2340"/><circle cx="252" cy="38.5" r="2" fill="#5ab4ff"/>
+          </g>
+          <g class="a-show4">
+            <path d="M246 60 l10 -10 l2 12z" fill="#16a34a"/>
+            <rect x="140" y="58" width="122" height="30" rx="12" fill="#16a34a"/>
+            <text x="201" y="77" font-size="9.5" font-weight="700" fill="#fff" text-anchor="middle" font-family="Manrope, Segoe UI, sans-serif">Please put that back.</text>
+          </g>
+
+          <!-- TEKJEE monitoring desk -->
+          <rect class="s-card" x="314" y="12" width="154" height="226" rx="12"/>
+          <text class="s-dim" x="326" y="31" font-size="8.5" letter-spacing="1">TEKJEE 24/7</text>
+          <rect x="326" y="40" width="130" height="84" rx="6" fill="#0c2340"/>
+          <rect x="336" y="76" width="30" height="40" rx="2" fill="#2c4a78"/><rect x="416" y="76" width="30" height="40" rx="2" fill="#2c4a78"/>
+          <circle cx="391" cy="86" r="4.5" fill="#94a3b8"/><rect x="386.5" y="91" width="9" height="18" rx="3" fill="#94a3b8"/>
+          <circle class="a-rec" cx="446" cy="50" r="3" fill="#ef4444"/>
+          <g class="a-pop3">
+            <rect x="379" y="74" width="24" height="40" rx="3" fill="none" stroke="#ef4444" stroke-width="2"/>
+            <rect x="332" y="47" width="46" height="15" rx="7.5" fill="#ef4444"/>
+            <text x="355" y="57.5" font-size="7.5" font-weight="800" fill="#fff" text-anchor="middle" font-family="Manrope, Segoe UI, sans-serif">ALERT</text>
+          </g>
+          <g class="a-bob">
+            <rect x="364" y="180" width="54" height="56" rx="18" fill="#16a34a"/>
+            <rect x="384" y="166" width="14" height="18" rx="5" fill="#7a4a2e"/>
+            <circle cx="391" cy="156" r="19" fill="#8d5a3b"/>
+            <path d="M372 154 C372 132 410 130 410 152 C404 144 394 142 384 144 C378 146 374 150 372 154Z" fill="#1d1d1d"/>
+            <g class="a-blink"><circle cx="384" cy="158" r="2.4" fill="#1c2c4c"/><circle cx="398" cy="158" r="2.4" fill="#1c2c4c"/></g>
+            <path d="M385 167 Q391 171 397 167" fill="none" stroke="#3d1f10" stroke-width="2" stroke-linecap="round"/>
+            <path d="M369 156 a22 22 0 0 1 44 0" fill="none" stroke="#0c2340" stroke-width="3.5" stroke-linecap="round"/>
+            <rect x="365" y="151" width="8" height="13" rx="3" fill="#0c2340"/><rect x="409" y="151" width="8" height="13" rx="3" fill="#0c2340"/>
+            <path d="M369 162 q2 13 14 12" fill="none" stroke="#0c2340" stroke-width="2.4" stroke-linecap="round"/>
+          </g>
+          <g class="a-show3">
+            <path d="M424 172 a10 10 0 0 1 0 14 M430 166 a18 18 0 0 1 0 26" fill="none" stroke="#16a34a" stroke-width="2.5" stroke-linecap="round"/>
+          </g>
+          <rect x="320" y="226" width="142" height="7" rx="3" fill="#0c2340"/>
+
+          <!-- the owner's phone alert -->
+          <rect class="s-card" x="12" y="252" width="456" height="76" rx="14"/>
+          <circle cx="46" cy="290" r="18" fill="#16a34a"/>
+          <path d="M38 283h16a3 3 0 0 1 3 3v8a3 3 0 0 1-3 3h-8l-6 5v-5h-2a3 3 0 0 1-3-3v-8a3 3 0 0 1 3-3z" fill="#fff"/>
+          <g class="a-hide4">
+            <text class="s-text" x="76" y="287" font-size="12">Your phone</text>
+            <text class="s-dim" x="76" y="304" font-size="9.5">No alerts. All quiet.</text>
+          </g>
+          <g class="a-show4" style="animation-delay:.4s">
+            <text class="s-text" x="76" y="287" font-size="12">Theft alert: aisle 2</text>
+            <text class="s-dim" x="76" y="304" font-size="9">2:14 PM · talk-down done · item put back</text>
+            <rect x="384" y="278" width="70" height="24" rx="12" fill="#16a34a"/>
+            <text x="419" y="294" font-size="9.5" font-weight="800" fill="#fff" text-anchor="middle" font-family="Manrope, Segoe UI, sans-serif">Handled ✓</text>
+          </g>
+        </svg>
+        <ol class="xs-steps">
+          <li style="--i:0"><b>1</b>Cameras record</li>
+          <li style="--i:1"><b>2</b>Something's wrong</li>
+          <li style="--i:2"><b>3</b>We spot it</li>
+          <li style="--i:3"><b>4</b>You're alerted</li>
+        </ol>
+      </figure>
+      <aside class="pg-panel" style="margin-top:20px" aria-label="Surveillance benefits">
         <h3>Benefits</h3>
         <ul class="cam-benefits">
           <li>Prevent internal theft</li>
@@ -143,6 +245,7 @@
           <li>Reduce shrinkage</li>
         </ul>
       </aside>
+      </div>
     </div>
   </section>
 
@@ -190,6 +293,109 @@
         <h2>Back office support services: stay organized and in control</h2>
         <p>Outsourced back office support and bookkeeping for gas stations, retail stores, restaurants and warehouses. Dedicated remote specialists, aligned with US and UK business hours, handle transaction reconciliation, QuickBooks and Xero bookkeeping, payroll preparation and vendor invoices at up to 60% lower cost than in-house staff.</p>
       </div>
+      <figure class="xs xs-wide pg-reveal" style="--xs-accent:#16a34a" data-follow="0,0.35,1,1">
+        <div class="xs-scroll" tabindex="0" aria-label="Illustration, scroll sideways on small screens"><svg viewBox="0 0 960 300" role="img" aria-label="How back office support works: your shift receipts and paperwork go to a TEKJEE specialist, who matches your sales to your bank deposits, updates your books, and sends you a daily report.">
+          <rect class="s-bg" x="0" y="0" width="960" height="300" rx="16"/>
+
+          <!-- the store counter with the day's paperwork -->
+          <ellipse cx="138" cy="282" rx="112" ry="7" fill="#000" opacity=".07"/>
+          <rect class="s-card" x="30" y="200" width="216" height="76" rx="8"/>
+          <rect class="s-line" x="30" y="214" width="216" height="3"/>
+          <rect x="52" y="146" width="84" height="54" rx="7" fill="#5c7ea3"/>
+          <rect x="62" y="154" width="44" height="18" rx="3" fill="#bfe0ff"/>
+          <text x="84" y="166.5" font-size="8" font-weight="800" fill="#0c2340" text-anchor="middle" font-family="JetBrains Mono, Consolas, monospace">$4,820</text>
+          <g fill="#cfe2f7"><rect x="62" y="178" width="8" height="6" rx="1.5"/><rect x="74" y="178" width="8" height="6" rx="1.5"/><rect x="86" y="178" width="8" height="6" rx="1.5"/><rect x="62" y="188" width="8" height="6" rx="1.5"/><rect x="74" y="188" width="8" height="6" rx="1.5"/><rect x="86" y="188" width="8" height="6" rx="1.5"/></g>
+          <rect x="112" y="122" width="16" height="30" rx="1" fill="#fff" stroke="#cfe2f7" stroke-width="1.5"/>
+          <path d="M116 130h8M116 136h8M116 142h5" stroke="#cfe2f7" stroke-width="1.5"/>
+          <g class="a-only1">
+            <g transform="translate(176 176) rotate(-10)"><rect x="-24" y="-16" width="48" height="32" rx="2" fill="#fff" stroke="#cfe2f7" stroke-width="1.5"/><path d="M-16 -7h28M-16 0h20M-16 7h24" stroke="#cfe2f7" stroke-width="2"/></g>
+            <g transform="translate(206 184) rotate(12)"><rect x="-20" y="-14" width="40" height="28" rx="2" fill="#fff" stroke="#cfe2f7" stroke-width="1.5"/><path d="M-12 -5h22M-12 2h16" stroke="#cfe2f7" stroke-width="2"/></g>
+            <g transform="translate(186 192) rotate(3)"><rect x="-30" y="-10" width="60" height="20" rx="3" fill="#febc2e"/><text x="0" y="3.5" font-size="8" font-weight="800" fill="#7a5200" text-anchor="middle" font-family="JetBrains Mono, Consolas, monospace">SHIFT BOOK</text></g>
+            <g transform="translate(222 130)"><circle r="14" fill="#ef4444"/><text y="5" font-size="15" font-weight="800" fill="#fff" text-anchor="middle" font-family="Manrope, Segoe UI, sans-serif">?</text></g>
+          </g>
+          <!-- stage 2: the paperwork goes to TEKJEE -->
+          <g transform="translate(190 180)">
+            <g class="dm-fly" style="--dx:268px;--dy:58px"><rect x="-13" y="-9" width="26" height="18" rx="2" fill="#fff" stroke="#94a3b8" stroke-width="1.5"/><path d="M-8 -3h14M-8 2h10" stroke="#94a3b8" stroke-width="1.5"/></g>
+            <g class="dm-fly" style="--dx:268px;--dy:58px;animation-delay:.25s"><rect x="-13" y="-9" width="26" height="18" rx="2" fill="#fff" stroke="#94a3b8" stroke-width="1.5"/><path d="M-8 -3h14M-8 2h10" stroke="#94a3b8" stroke-width="1.5"/></g>
+            <g class="dm-fly" style="--dx:268px;--dy:58px;animation-delay:.5s"><rect x="-14" y="-7" width="28" height="14" rx="3" fill="#febc2e"/></g>
+          </g>
+
+          <!-- reconciliation: sales matched to the bank -->
+          <rect class="s-card" x="280" y="24" width="280" height="128" rx="14"/>
+          <text class="s-dim" x="296" y="46" font-size="8.5" letter-spacing="1">DAILY RECONCILIATION</text>
+          <g class="a-show2" style="animation-delay:.3s">
+            <text class="s-text" x="296" y="74" font-size="11">POS sales</text>
+            <text class="s-text" x="544" y="74" font-size="11" text-anchor="end">$4,820.00</text>
+          </g>
+          <g class="a-show2" style="animation-delay:.55s">
+            <text class="s-text" x="296" y="98" font-size="11">Bank deposit + card</text>
+            <text class="s-text" x="544" y="98" font-size="11" text-anchor="end">$4,820.00</text>
+          </g>
+          <g class="a-pop2" style="animation-delay:.85s">
+            <rect x="292" y="112" width="256" height="28" rx="8" fill="#16a34a" opacity=".13"/>
+            <text x="306" y="130" font-size="10.5" font-weight="800" fill="#16a34a" font-family="Manrope, Segoe UI, sans-serif">Over/short: $0.00</text>
+            <text x="536" y="130" font-size="10.5" font-weight="800" fill="#16a34a" text-anchor="end" font-family="Manrope, Segoe UI, sans-serif">Matched ✓</text>
+          </g>
+
+          <!-- the TEKJEE specialist -->
+          <ellipse cx="420" cy="284" rx="100" ry="6" fill="#000" opacity=".07"/>
+          <g class="a-bob">
+            <rect x="358" y="204" width="56" height="64" rx="20" fill="#16a34a"/>
+            <rect x="379" y="190" width="14" height="18" rx="5" fill="#e5ae86"/>
+            <path d="M362 186 C356 156 414 152 412 186 C412 200 404 206 404 206 L368 206 C368 206 362 198 362 186Z" fill="#3b2314"/>
+            <circle cx="386" cy="180" r="20" fill="#f2c4a0"/>
+            <path d="M366 178 C366 154 408 154 406 176 C398 166 384 164 372 170 C369 172 367 175 366 178Z" fill="#3b2314"/>
+            <g class="a-blink"><circle cx="379" cy="183" r="2.4" fill="#1c2c4c"/><circle cx="393" cy="183" r="2.4" fill="#1c2c4c"/></g>
+            <path d="M380 192 Q386 196 392 192" fill="none" stroke="#b04a3a" stroke-width="2.2" stroke-linecap="round"/>
+          </g>
+          <rect x="300" y="266" width="230" height="9" rx="4" fill="#0c2340"/>
+          <circle class="a-type" cx="424" cy="258" r="6.5" fill="#f2c4a0"/>
+          <circle class="a-type" cx="494" cy="258" r="6.5" fill="#f2c4a0" style="animation-delay:.25s"/>
+          <path d="M418 214 h88 l-8 52 h-72z" fill="#cfd8e6"/>
+          <circle cx="462" cy="240" r="7" fill="#fff" opacity=".85"/>
+
+          <!-- the books -->
+          <rect class="s-card" x="590" y="24" width="346" height="128" rx="14"/>
+          <text class="s-text" x="606" y="50" font-size="13">Your books</text>
+          <text class="s-dim" x="920" y="49" font-size="8" text-anchor="end" letter-spacing="1">QUICKBOOKS · XERO</text>
+          <g class="a-pop3"><rect x="690" y="38" width="66" height="17" rx="8.5" fill="#16a34a"/><text x="723" y="50" font-size="8.5" font-weight="800" fill="#fff" text-anchor="middle" font-family="Manrope, Segoe UI, sans-serif">Updated ✓</text></g>
+          <g class="a-show3" style="animation-delay:.2s">
+            <rect class="s-line" x="606" y="68" width="44" height="8" rx="4"/><rect class="s-line" x="662" y="68" width="150" height="8" rx="4"/>
+            <text x="920" y="76" font-size="10.5" font-weight="800" fill="#16a34a" text-anchor="end" font-family="Manrope, Segoe UI, sans-serif">+$4,820</text>
+          </g>
+          <g class="a-show3" style="animation-delay:.4s">
+            <rect class="s-line" x="606" y="94" width="44" height="8" rx="4"/><rect class="s-line" x="662" y="94" width="120" height="8" rx="4"/>
+            <text x="920" y="102" font-size="10.5" font-weight="800" fill="#ef4444" text-anchor="end" font-family="Manrope, Segoe UI, sans-serif">−$1,250</text>
+          </g>
+          <g class="a-show3" style="animation-delay:.6s">
+            <rect class="s-line" x="606" y="120" width="44" height="8" rx="4"/><rect class="s-line" x="662" y="120" width="136" height="8" rx="4"/>
+            <text x="920" y="128" font-size="10.5" font-weight="800" fill="#ef4444" text-anchor="end" font-family="Manrope, Segoe UI, sans-serif">−$310</text>
+          </g>
+
+          <!-- the owner's daily report -->
+          <rect class="s-card" x="590" y="166" width="346" height="110" rx="14"/>
+          <circle cx="618" cy="194" r="14" fill="#16a34a"/>
+          <path d="M610 189h16v11h-16z M610 189l8 6 8-6" fill="none" stroke="#fff" stroke-width="1.8" stroke-linejoin="round"/>
+          <text class="s-text" x="642" y="192" font-size="11.5">Your daily report</text>
+          <text class="s-dim" x="642" y="206" font-size="8.5">8:00 AM · WhatsApp &amp; email</text>
+          <g class="a-show4">
+            <text class="s-dim" x="606" y="236" font-size="9">SALES</text>
+            <text class="s-text" x="606" y="254" font-size="15">$4,820</text>
+            <text class="s-dim" x="712" y="236" font-size="9">OVER/SHORT</text>
+            <text x="712" y="254" font-size="15" font-weight="800" fill="#16a34a" font-family="Manrope, Segoe UI, sans-serif">$0.00 ✓</text>
+          </g>
+          <rect class="a-grow4" x="842" y="236" width="14" height="24" rx="3" fill="#16a34a" opacity=".45"/>
+          <rect class="a-grow4" x="862" y="226" width="14" height="34" rx="3" fill="#16a34a" opacity=".65" style="animation-delay:.1s"/>
+          <rect class="a-grow4" x="882" y="214" width="14" height="46" rx="3" fill="#16a34a" opacity=".85" style="animation-delay:.2s"/>
+          <rect class="a-grow4" x="902" y="202" width="14" height="58" rx="3" fill="#16a34a" style="animation-delay:.3s"/>
+        </svg></div>
+        <ol class="xs-steps">
+          <li style="--i:0"><b>1</b>Shift paperwork</li>
+          <li style="--i:1"><b>2</b>We reconcile</li>
+          <li style="--i:2"><b>3</b>Books updated</li>
+          <li style="--i:3"><b>4</b>Your daily report</li>
+        </ol>
+      </figure>
       <div class="pg-grid">
         <article class="pg-card accent-page pg-reveal">
           <div class="pg-icon accent-page"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2z"/><path d="M9 8h6M9 12h6"/></svg></div>
