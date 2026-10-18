@@ -234,6 +234,24 @@
     transition:opacity .6s ease, visibility 0s linear .6s;
   }
 
+  /* end screen: when the video finishes, a dark backdrop image fills the hero and the TEKJEE text sits on it
+     in light colours (same in light and dark mode, since the image is dark) */
+  .hero-end-bg{
+    position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+    transition:opacity .8s ease, visibility 0s linear 0s;
+  }
+  .video-hero.text-hidden .hero-end-bg{opacity:0;visibility:hidden;transition:opacity .6s ease, visibility 0s linear .6s;}
+  .video-hero .video-scrim,
+  :root:not([data-theme="dark"]) .video-hero .video-scrim{
+    background:radial-gradient(ellipse 60% 55% at 50% 50%, rgba(4,12,28,.45) 0%, rgba(4,12,28,.15) 60%, transparent 100%);
+  }
+  .video-hero:not(.text-hidden) .hero-content .eyebrow{color:#7cc4ff;}
+  .video-hero:not(.text-hidden) .hero-content .wordmark{color:#fff;}
+  .video-hero:not(.text-hidden) .hero-content .hero-sub{color:rgba(255,255,255,.84);}
+  .video-hero:not(.text-hidden) .hero-content .btn-ghost{color:#fff;border-color:rgba(255,255,255,.45);}
+  .video-hero:not(.text-hidden) .hero-content .btn-ghost:hover{background:rgba(255,255,255,.1);border-color:#fff;}
+  .video-hero:not(.text-hidden) .scroll-hint{color:rgba(255,255,255,.65);}
+
   .hero-sound{
     position:absolute;
     right:24px;
@@ -1198,6 +1216,51 @@
     padding:10px 12px;border-radius:9px;color:var(--text-muted);font-size:.9rem;white-space:nowrap;
   }
   .nav-dd-menu a:hover,.nav-dd-menu a:focus-visible{background:var(--bg-raised);color:var(--text);}
+
+/* ---------- NAV: PHONE MENU (burger added by page.js) ---------- */
+  .nav-burger{display:none;}
+  @media (max-width:720px){
+    .nav-burger{
+      flex:none;width:38px;height:38px;border-radius:50%;
+      border:1px solid var(--border);background:var(--bg-card);color:var(--text);
+      display:grid;place-items:center;cursor:pointer;margin-left:auto;
+    }
+    .nav-burger svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;}
+    .nav-burger path{transition:transform .2s ease, opacity .2s ease;transform-box:fill-box;transform-origin:center;}
+    .nav-open .nav-burger .nb-1{transform:translateY(5px) rotate(45deg);}
+    .nav-open .nav-burger .nb-2{opacity:0;}
+    .nav-open .nav-burger .nb-3{transform:translateY(-5px) rotate(-45deg);}
+    .nav-inner{gap:10px;}
+    .nav-inner .theme-toggle{margin-left:0;}
+
+    header.nav.nav-open .nav-links{
+      display:flex;flex-direction:column;align-items:stretch;gap:2px;
+      position:absolute;top:100%;left:0;right:0;
+      padding:10px 16px 18px;
+      background:var(--bg-card);border-bottom:1px solid var(--border);
+      box-shadow:0 24px 40px -24px rgba(12,35,64,.45);
+      max-height:calc(100vh - 70px);max-height:calc(100svh - 70px);overflow-y:auto;
+      font-size:1rem;
+    }
+    header.nav.nav-open .nav-dd{width:100%;}
+    header.nav.nav-open .nav-links > a,
+    header.nav.nav-open .nav-dd-btn{padding:12px 10px;border-radius:10px;width:100%;justify-content:space-between;color:var(--text);}
+    header.nav.nav-open .nav-links > a:hover,
+    header.nav.nav-open .nav-dd-btn:hover{background:var(--bg-raised);}
+    header.nav .nav-dd-menu,
+    header.nav .nav-dd:hover .nav-dd-menu{
+      position:static;transform:none;opacity:1;visibility:visible;
+      display:none;min-width:0;box-shadow:none;border:0;border-radius:0;
+      margin:0 0 4px 10px;padding:2px 0 2px 12px;border-left:2px solid var(--border);background:transparent;
+    }
+    header.nav .nav-dd.open .nav-dd-menu{display:flex;transform:none;}
+    header.nav .nav-dd-menu::before{display:none;}
+    header.nav .nav-dd-menu a{white-space:normal;padding:10px;}
+  }
+  @media (max-width:480px){
+    .nav-burger{width:32px;height:32px;}
+    .nav-burger svg{width:17px;height:17px;}
+  }
 
 /* ---------- BOOKING / START PROJECT CARD ---------- */
   body.book-lock{overflow:hidden;}

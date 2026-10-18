@@ -399,6 +399,43 @@
   dd.addEventListener('focusout', function(e){ if (!dd.contains(e.relatedTarget)) set(false); });
 })();
 
+/* Phone menu: below 720px the nav links are hidden, so a burger button (added next to the theme toggle)
+   opens them as a panel under the header; Services expands inside it. Closes on a link tap, Escape,
+   a tap outside, or when the window grows back to desktop width. */
+(function(){
+  var header = document.querySelector('header.nav');
+  var links = header && header.querySelector('.nav-links');
+  var inner = header && header.querySelector('.nav-inner');
+  if (!links || !inner) return;
+  links.id = links.id || 'navLinks';
+  var btn = document.createElement('button');
+  btn.type = 'button';
+  btn.className = 'nav-burger';
+  btn.setAttribute('aria-controls', links.id);
+  btn.setAttribute('aria-expanded', 'false');
+  btn.setAttribute('aria-label', 'Open menu');
+  btn.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path class="nb-1" d="M4 7h16"/><path class="nb-2" d="M4 12h16"/><path class="nb-3" d="M4 17h16"/></svg>';
+  var toggle = inner.querySelector('.theme-toggle');
+  inner.insertBefore(btn, toggle || inner.lastElementChild);
+
+  function set(open){
+    header.classList.toggle('nav-open', open);
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+  }
+  btn.addEventListener('click', function(e){ e.stopPropagation(); set(!header.classList.contains('nav-open')); });
+  links.addEventListener('click', function(e){ if (e.target.closest('a')) set(false); });
+  document.addEventListener('click', function(e){ if (!header.contains(e.target)) set(false); });
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape' && header.classList.contains('nav-open')) { set(false); btn.focus(); }
+  });
+  if (window.matchMedia) {
+    var wide = window.matchMedia('(min-width: 721px)');
+    var onWide = function(){ if (wide.matches) set(false); };
+    if (wide.addEventListener) wide.addEventListener('change', onWide); else if (wide.addListener) wide.addListener(onWide);
+  }
+})();
+
 /* BOOKING / START PROJECT card: opened by any [data-book] link
    ("Book a consult" buttons and the START A PROJECT nav button) */
 (function(){

@@ -34,9 +34,9 @@
 </script>
 <style>
 .blog-hub-hero { text-align: center; padding: 4rem 1rem 3rem; max-width: 900px; margin: 0 auto; }
-.blog-hub-hero h1 { font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 800; margin-bottom: 1rem; color: #fff; }
+.blog-hub-hero h1 { font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 800; margin-bottom: 1rem; color: var(--text); }
 .blog-hub-hero p { font-size: 1.15rem; color: var(--text-dim); line-height: 1.7; }
-.blog-card:hover { transform: translateY(-4px); border-color: rgba(255,255,255,0.25); }
+.blog-card:hover { transform: translateY(-4px); border-color: var(--cyan); box-shadow: 0 18px 36px -24px rgba(20,60,130,.45); }
 </style>
 </head>
 <body>
@@ -82,16 +82,16 @@
 
   
         <div class="blog-cat-section" style="margin-bottom: 3.5rem;">
-          <h2 style="font-size: 1.6rem; color: #fff; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.75rem;">
+          <h2 style="font-size: 1.6rem; color: var(--text); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.75rem;">
             <span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:#16a34a;"></span>
             Camera Surveillance & Security
           </h2>
           <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.5rem;">
         
-            <a href="blog/security-camera-installation-guide.html" class="blog-card" style="display: flex; flex-direction: column; justify-content: space-between; padding: 1.75rem; border-radius: 14px; background: rgba(255,255,255,0.03); border: 1px solid var(--border-soft); text-decoration: none; transition: transform 0.2s ease, border-color 0.2s ease; box-shadow: 0 4px 20px rgba(0,0,0,0.15);">
+            <a href="blog/security-camera-installation-guide.html" class="blog-card" style="display: flex; flex-direction: column; justify-content: space-between; padding: 1.75rem; border-radius: 14px; background: var(--bg-card); border: 1px solid var(--border-soft); text-decoration: none; transition: transform 0.2s ease, border-color 0.2s ease; box-shadow: 0 4px 20px rgba(0,0,0,0.15);">
               <div>
                 <span style="display:inline-block;font-family:var(--font-mono);font-size:0.75rem;font-weight:600;color:#16a34a;margin-bottom:0.75rem;">Dallas, TX (TekJee HQ) • Commercial Business Owners</span>
-                <h3 style="font-size: 1.15rem; color: #fff; line-height: 1.4; margin-bottom: 0.75rem; font-weight: 600;">Security Camera Installation: Commercial Buyer Guide and Best Practices</h3>
+                <h3 style="font-size: 1.15rem; color: var(--text); line-height: 1.4; margin-bottom: 0.75rem; font-weight: 600;">Security Camera Installation: Commercial Buyer Guide and Best Practices</h3>
                 <p style="font-size: 0.88rem; color: var(--text-dim); line-height: 1.6; margin-bottom: 1.25rem;">Comprehensive analysis of security camera installation focusing on commercial deployment, hardware specs, and ROI metrics.</p>
               </div>
               <div style="font-family:var(--font-mono);font-size:0.8rem;color:#16a34a;font-weight:600;display:flex;align-items:center;gap:0.35rem;">
@@ -99,10 +99,10 @@
               </div>
             </a>
             
-            <a href="blog/commercial-security-camera-installation-guide.html" class="blog-card" style="display: flex; flex-direction: column; justify-content: space-between; padding: 1.75rem; border-radius: 14px; background: rgba(255,255,255,0.03); border: 1px solid var(--border-soft); text-decoration: none; transition: transform 0.2s ease, border-color 0.2s ease; box-shadow: 0 4px 20px rgba(0,0,0,0.15);">
+            <a href="blog/commercial-security-camera-installation-guide.html" class="blog-card" style="display: flex; flex-direction: column; justify-content: space-between; padding: 1.75rem; border-radius: 14px; background: var(--bg-card); border: 1px solid var(--border-soft); text-decoration: none; transition: transform 0.2s ease, border-color 0.2s ease; box-shadow: 0 4px 20px rgba(0,0,0,0.15);">
               <div>
                 <span style="display:inline-block;font-family:var(--font-mono);font-size:0.75rem;font-weight:600;color:#16a34a;margin-bottom:0.75rem;">Dallas, TX • Commercial Property Managers</span>
-                <h3 style="font-size: 1.15rem; color: #fff; line-height: 1.4; margin-bottom: 0.75rem; font-weight: 600;">Commercial Camera Installation: Hardware vs 24/7 Live Monitoring</h3>
+                <h3 style="font-size: 1.15rem; color: var(--text); line-height: 1.4; margin-bottom: 0.75rem; font-weight: 600;">Commercial Camera Installation: Hardware vs 24/7 Live Monitoring</h3>
                 <p style="font-size: 0.88rem; color: var(--text-dim); line-height: 1.6; margin-bottom: 1.25rem;">Comprehensive analysis of commercial security camera installation focusing on commercial deployment, hardware specs, and ROI metrics.</p>
               </div>
               <div style="font-family:var(--font-mono);font-size:0.8rem;color:#16a34a;font-weight:600;display:flex;align-items:center;gap:0.35rem;">
@@ -110,10 +110,10 @@
               </div>
             </a>
             
-            <a href="blog/commercial-cctv-installation-guide.html" class="blog-card" style="display: flex; flex-direction: column; justify-content: space-between; padding: 1.75rem; border-radius: 14px; background: rgba(255,255,255,0.03); border: 1px solid var(--border-soft); text-decoration: none; transition: transform 0.2s ease, border-color 0.2s ease; box-shadow: 0 4px 20px rgba(0,0,0,0.15);">
+            <a href="blog/commercial-cctv-installation-guide.html" class="blog-card" style="display: flex; flex-direction: column; justify-content: space-between; padding: 1.75rem; border-radius: 14px; background: var(--bg-card); border: 1px solid var(--border-soft); text-decoration: none; transition: transform 0.2s ease, border-color 0.2s ease; box-shadow: 0 4px 20px rgba(0,0,0,0.15);">
               <div>
                 <span style="display:inline-block;font-family:var(--font-mono);font-size:0.75rem;font-weight:600;color:#16a34a;margin-bottom:0.75rem;">Miami, FL • Regional Business Owners</span>
-                <h3 style="font-size: 1.15rem; color: #fff; line-height: 1.4; margin-bottom: 0.75rem; font-weight: 600;">Local CCTV Installers vs 24/7 Remote Video Monitoring Providers</h3>
+                <h3 style="font-size: 1.15rem; color: var(--text); line-height: 1.4; margin-bottom: 0.75rem; font-weight: 600;">Local CCTV Installers vs 24/7 Remote Video Monitoring Providers</h3>
                 <p style="font-size: 0.88rem; color: var(--text-dim); line-height: 1.6; margin-bottom: 1.25rem;">Comprehensive analysis of commercial cctv installation near me focusing on commercial deployment, hardware specs, and ROI metrics.</p>
               </div>
               <div style="font-family:var(--font-mono);font-size:0.8rem;color:#16a34a;font-weight:600;display:flex;align-items:center;gap:0.35rem;">
@@ -121,10 +121,10 @@
               </div>
             </a>
             
-            <a href="blog/los-angeles-security-camera-installation-guide.html" class="blog-card" style="display: flex; flex-direction: column; justify-content: space-between; padding: 1.75rem; border-radius: 14px; background: rgba(255,255,255,0.03); border: 1px solid var(--border-soft); text-decoration: none; transition: transform 0.2s ease, border-color 0.2s ease; box-shadow: 0 4px 20px rgba(0,0,0,0.15);">
+            <a href="blog/los-angeles-security-camera-installation-guide.html" class="blog-card" style="display: flex; flex-direction: column; justify-content: space-between; padding: 1.75rem; border-radius: 14px; background: var(--bg-card); border: 1px solid var(--border-soft); text-decoration: none; transition: transform 0.2s ease, border-color 0.2s ease; box-shadow: 0 4px 20px rgba(0,0,0,0.15);">
               <div>
                 <span style="display:inline-block;font-family:var(--font-mono);font-size:0.75rem;font-weight:600;color:#16a34a;margin-bottom:0.75rem;">Los Angeles, CA • LA Commercial Businesses</span>
-                <h3 style="font-size: 1.15rem; color: #fff; line-height: 1.4; margin-bottom: 0.75rem; font-weight: 600;">Los Angeles Camera Installation: Proactive Virtual Guarding Solutions</h3>
+                <h3 style="font-size: 1.15rem; color: var(--text); line-height: 1.4; margin-bottom: 0.75rem; font-weight: 600;">Los Angeles Camera Installation: Proactive Virtual Guarding Solutions</h3>
                 <p style="font-size: 0.88rem; color: var(--text-dim); line-height: 1.6; margin-bottom: 1.25rem;">Comprehensive analysis of security camera installation los angeles focusing on commercial deployment, hardware specs, and ROI metrics.</p>
               </div>
               <div style="font-family:var(--font-mono);font-size:0.8rem;color:#16a34a;font-weight:600;display:flex;align-items:center;gap:0.35rem;">
@@ -132,10 +132,10 @@
               </div>
             </a>
             
-            <a href="blog/new-york-security-camera-installation-guide.html" class="blog-card" style="display: flex; flex-direction: column; justify-content: space-between; padding: 1.75rem; border-radius: 14px; background: rgba(255,255,255,0.03); border: 1px solid var(--border-soft); text-decoration: none; transition: transform 0.2s ease, border-color 0.2s ease; box-shadow: 0 4px 20px rgba(0,0,0,0.15);">
+            <a href="blog/new-york-security-camera-installation-guide.html" class="blog-card" style="display: flex; flex-direction: column; justify-content: space-between; padding: 1.75rem; border-radius: 14px; background: var(--bg-card); border: 1px solid var(--border-soft); text-decoration: none; transition: transform 0.2s ease, border-color 0.2s ease; box-shadow: 0 4px 20px rgba(0,0,0,0.15);">
               <div>
                 <span style="display:inline-block;font-family:var(--font-mono);font-size:0.75rem;font-weight:600;color:#16a34a;margin-bottom:0.75rem;">New York, NY • NYC Business Owners</span>
-                <h3 style="font-size: 1.15rem; color: #fff; line-height: 1.4; margin-bottom: 0.75rem; font-weight: 600;">New York Camera Installation: Live Video Monitoring and Guard Intervention</h3>
+                <h3 style="font-size: 1.15rem; color: var(--text); line-height: 1.4; margin-bottom: 0.75rem; font-weight: 600;">New York Camera Installation: Live Video Monitoring and Guard Intervention</h3>
                 <p style="font-size: 0.88rem; color: var(--text-dim); line-height: 1.6; margin-bottom: 1.25rem;">Comprehensive analysis of security camera installation new york focusing on commercial deployment, hardware specs, and ROI metrics.</p>
               </div>
               <div style="font-family:var(--font-mono);font-size:0.8rem;color:#16a34a;font-weight:600;display:flex;align-items:center;gap:0.35rem;">
@@ -147,41 +147,41 @@
         </div>
         
         <div class="blog-cat-section" style="margin-bottom: 3.5rem;">
-          <h2 style="font-size: 1.6rem; color: #fff; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.75rem;">
-            <span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:#0284c7;"></span>
+          <h2 style="font-size: 1.6rem; color: var(--text); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.75rem;">
+            <span style="display:inline-block;width:12px;height:12px;border-radius:50%;background: var(--cyan);"></span>
             AI & Autonomous Workflows
           </h2>
           <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.5rem;">
         
-            <a href="blog/ai-customer-service-bots-guide.html" class="blog-card" style="display: flex; flex-direction: column; justify-content: space-between; padding: 1.75rem; border-radius: 14px; background: rgba(255,255,255,0.03); border: 1px solid var(--border-soft); text-decoration: none; transition: transform 0.2s ease, border-color 0.2s ease; box-shadow: 0 4px 20px rgba(0,0,0,0.15);">
+            <a href="blog/ai-customer-service-bots-guide.html" class="blog-card" style="display: flex; flex-direction: column; justify-content: space-between; padding: 1.75rem; border-radius: 14px; background: var(--bg-card); border: 1px solid var(--border-soft); text-decoration: none; transition: transform 0.2s ease, border-color 0.2s ease; box-shadow: 0 4px 20px rgba(0,0,0,0.15);">
               <div>
-                <span style="display:inline-block;font-family:var(--font-mono);font-size:0.75rem;font-weight:600;color:#0284c7;margin-bottom:0.75rem;">Miami, FL • Customer Support Directors</span>
-                <h3 style="font-size: 1.15rem; color: #fff; line-height: 1.4; margin-bottom: 0.75rem; font-weight: 600;">AI Bots for Customer Service: 24/7 Instant Qualification Blueprint</h3>
+                <span style="display:inline-block;font-family:var(--font-mono);font-size:0.75rem;font-weight:600;color: var(--cyan);margin-bottom:0.75rem;">Miami, FL • Customer Support Directors</span>
+                <h3 style="font-size: 1.15rem; color: var(--text); line-height: 1.4; margin-bottom: 0.75rem; font-weight: 600;">AI Bots for Customer Service: 24/7 Instant Qualification Blueprint</h3>
                 <p style="font-size: 0.88rem; color: var(--text-dim); line-height: 1.6; margin-bottom: 1.25rem;">Comprehensive analysis of ai bots for customer service focusing on commercial deployment, hardware specs, and ROI metrics.</p>
               </div>
-              <div style="font-family:var(--font-mono);font-size:0.8rem;color:#0284c7;font-weight:600;display:flex;align-items:center;gap:0.35rem;">
+              <div style="font-family:var(--font-mono);font-size:0.8rem;color: var(--cyan);font-weight:600;display:flex;align-items:center;gap:0.35rem;">
                 Read Expert Guide →
               </div>
             </a>
             
-            <a href="blog/ai-automation-business-guide.html" class="blog-card" style="display: flex; flex-direction: column; justify-content: space-between; padding: 1.75rem; border-radius: 14px; background: rgba(255,255,255,0.03); border: 1px solid var(--border-soft); text-decoration: none; transition: transform 0.2s ease, border-color 0.2s ease; box-shadow: 0 4px 20px rgba(0,0,0,0.15);">
+            <a href="blog/ai-automation-business-guide.html" class="blog-card" style="display: flex; flex-direction: column; justify-content: space-between; padding: 1.75rem; border-radius: 14px; background: var(--bg-card); border: 1px solid var(--border-soft); text-decoration: none; transition: transform 0.2s ease, border-color 0.2s ease; box-shadow: 0 4px 20px rgba(0,0,0,0.15);">
               <div>
-                <span style="display:inline-block;font-family:var(--font-mono);font-size:0.75rem;font-weight:600;color:#0284c7;margin-bottom:0.75rem;">Dallas, TX • SMB & Enterprise Owners</span>
-                <h3 style="font-size: 1.15rem; color: #fff; line-height: 1.4; margin-bottom: 0.75rem; font-weight: 600;">AI Automation for Business Guide: Autonomous Workflows vs Basic Bots</h3>
+                <span style="display:inline-block;font-family:var(--font-mono);font-size:0.75rem;font-weight:600;color: var(--cyan);margin-bottom:0.75rem;">Dallas, TX • SMB & Enterprise Owners</span>
+                <h3 style="font-size: 1.15rem; color: var(--text); line-height: 1.4; margin-bottom: 0.75rem; font-weight: 600;">AI Automation for Business Guide: Autonomous Workflows vs Basic Bots</h3>
                 <p style="font-size: 0.88rem; color: var(--text-dim); line-height: 1.6; margin-bottom: 1.25rem;">Comprehensive analysis of ai automation for business focusing on commercial deployment, hardware specs, and ROI metrics.</p>
               </div>
-              <div style="font-family:var(--font-mono);font-size:0.8rem;color:#0284c7;font-weight:600;display:flex;align-items:center;gap:0.35rem;">
+              <div style="font-family:var(--font-mono);font-size:0.8rem;color: var(--cyan);font-weight:600;display:flex;align-items:center;gap:0.35rem;">
                 Read Expert Guide →
               </div>
             </a>
             
-            <a href="blog/agentic-ai-solutions-guide.html" class="blog-card" style="display: flex; flex-direction: column; justify-content: space-between; padding: 1.75rem; border-radius: 14px; background: rgba(255,255,255,0.03); border: 1px solid var(--border-soft); text-decoration: none; transition: transform 0.2s ease, border-color 0.2s ease; box-shadow: 0 4px 20px rgba(0,0,0,0.15);">
+            <a href="blog/agentic-ai-solutions-guide.html" class="blog-card" style="display: flex; flex-direction: column; justify-content: space-between; padding: 1.75rem; border-radius: 14px; background: var(--bg-card); border: 1px solid var(--border-soft); text-decoration: none; transition: transform 0.2s ease, border-color 0.2s ease; box-shadow: 0 4px 20px rgba(0,0,0,0.15);">
               <div>
-                <span style="display:inline-block;font-family:var(--font-mono);font-size:0.75rem;font-weight:600;color:#0284c7;margin-bottom:0.75rem;">Austin, TX • Enterprise & Mid-Market Firms</span>
-                <h3 style="font-size: 1.15rem; color: #fff; line-height: 1.4; margin-bottom: 0.75rem; font-weight: 600;">What Are Agentic AI Solutions? Multi-Agent Systems Explained for Executives</h3>
+                <span style="display:inline-block;font-family:var(--font-mono);font-size:0.75rem;font-weight:600;color: var(--cyan);margin-bottom:0.75rem;">Austin, TX • Enterprise & Mid-Market Firms</span>
+                <h3 style="font-size: 1.15rem; color: var(--text); line-height: 1.4; margin-bottom: 0.75rem; font-weight: 600;">What Are Agentic AI Solutions? Multi-Agent Systems Explained for Executives</h3>
                 <p style="font-size: 0.88rem; color: var(--text-dim); line-height: 1.6; margin-bottom: 1.25rem;">Comprehensive analysis of agentic ai solutions focusing on commercial deployment, hardware specs, and ROI metrics.</p>
               </div>
-              <div style="font-family:var(--font-mono);font-size:0.8rem;color:#0284c7;font-weight:600;display:flex;align-items:center;gap:0.35rem;">
+              <div style="font-family:var(--font-mono);font-size:0.8rem;color: var(--cyan);font-weight:600;display:flex;align-items:center;gap:0.35rem;">
                 Read Expert Guide →
               </div>
             </a>
@@ -190,16 +190,16 @@
         </div>
         
         <div class="blog-cat-section" style="margin-bottom: 3.5rem;">
-          <h2 style="font-size: 1.6rem; color: #fff; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.75rem;">
+          <h2 style="font-size: 1.6rem; color: var(--text); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.75rem;">
             <span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:#0d9488;"></span>
             Back Office & Virtual Operations
           </h2>
           <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.5rem;">
         
-            <a href="blog/virtual-administrative-support-guide.html" class="blog-card" style="display: flex; flex-direction: column; justify-content: space-between; padding: 1.75rem; border-radius: 14px; background: rgba(255,255,255,0.03); border: 1px solid var(--border-soft); text-decoration: none; transition: transform 0.2s ease, border-color 0.2s ease; box-shadow: 0 4px 20px rgba(0,0,0,0.15);">
+            <a href="blog/virtual-administrative-support-guide.html" class="blog-card" style="display: flex; flex-direction: column; justify-content: space-between; padding: 1.75rem; border-radius: 14px; background: var(--bg-card); border: 1px solid var(--border-soft); text-decoration: none; transition: transform 0.2s ease, border-color 0.2s ease; box-shadow: 0 4px 20px rgba(0,0,0,0.15);">
               <div>
                 <span style="display:inline-block;font-family:var(--font-mono);font-size:0.75rem;font-weight:600;color:#0d9488;margin-bottom:0.75rem;">Los Angeles, CA • Commercial Business Owners</span>
-                <h3 style="font-size: 1.15rem; color: #fff; line-height: 1.4; margin-bottom: 0.75rem; font-weight: 600;">Virtual Administrative Support for Modern Businesses: Cost vs Value</h3>
+                <h3 style="font-size: 1.15rem; color: var(--text); line-height: 1.4; margin-bottom: 0.75rem; font-weight: 600;">Virtual Administrative Support for Modern Businesses: Cost vs Value</h3>
                 <p style="font-size: 0.88rem; color: var(--text-dim); line-height: 1.6; margin-bottom: 1.25rem;">Comprehensive analysis of virtual administrative support for business focusing on commercial deployment, hardware specs, and ROI metrics.</p>
               </div>
               <div style="font-family:var(--font-mono);font-size:0.8rem;color:#0d9488;font-weight:600;display:flex;align-items:center;gap:0.35rem;">
@@ -207,10 +207,10 @@
               </div>
             </a>
             
-            <a href="blog/retail-store-back-office-management-guide.html" class="blog-card" style="display: flex; flex-direction: column; justify-content: space-between; padding: 1.75rem; border-radius: 14px; background: rgba(255,255,255,0.03); border: 1px solid var(--border-soft); text-decoration: none; transition: transform 0.2s ease, border-color 0.2s ease; box-shadow: 0 4px 20px rgba(0,0,0,0.15);">
+            <a href="blog/retail-store-back-office-management-guide.html" class="blog-card" style="display: flex; flex-direction: column; justify-content: space-between; padding: 1.75rem; border-radius: 14px; background: var(--bg-card); border: 1px solid var(--border-soft); text-decoration: none; transition: transform 0.2s ease, border-color 0.2s ease; box-shadow: 0 4px 20px rgba(0,0,0,0.15);">
               <div>
                 <span style="display:inline-block;font-family:var(--font-mono);font-size:0.75rem;font-weight:600;color:#0d9488;margin-bottom:0.75rem;">New York, NY • Retail Store Managers</span>
-                <h3 style="font-size: 1.15rem; color: #fff; line-height: 1.4; margin-bottom: 0.75rem; font-weight: 600;">Retail Store Back Office Management: Eliminating Inventory Discrepancies</h3>
+                <h3 style="font-size: 1.15rem; color: var(--text); line-height: 1.4; margin-bottom: 0.75rem; font-weight: 600;">Retail Store Back Office Management: Eliminating Inventory Discrepancies</h3>
                 <p style="font-size: 0.88rem; color: var(--text-dim); line-height: 1.6; margin-bottom: 1.25rem;">Comprehensive analysis of retail store back office management focusing on commercial deployment, hardware specs, and ROI metrics.</p>
               </div>
               <div style="font-family:var(--font-mono);font-size:0.8rem;color:#0d9488;font-weight:600;display:flex;align-items:center;gap:0.35rem;">
@@ -222,16 +222,16 @@
         </div>
         
         <div class="blog-cat-section" style="margin-bottom: 3.5rem;">
-          <h2 style="font-size: 1.6rem; color: #fff; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.75rem;">
+          <h2 style="font-size: 1.6rem; color: var(--text); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.75rem;">
             <span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:#7c3aed;"></span>
             CRM & Lead Pipeline Automation
           </h2>
           <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.5rem;">
         
-            <a href="blog/crm-automation-small-business-guide.html" class="blog-card" style="display: flex; flex-direction: column; justify-content: space-between; padding: 1.75rem; border-radius: 14px; background: rgba(255,255,255,0.03); border: 1px solid var(--border-soft); text-decoration: none; transition: transform 0.2s ease, border-color 0.2s ease; box-shadow: 0 4px 20px rgba(0,0,0,0.15);">
+            <a href="blog/crm-automation-small-business-guide.html" class="blog-card" style="display: flex; flex-direction: column; justify-content: space-between; padding: 1.75rem; border-radius: 14px; background: var(--bg-card); border: 1px solid var(--border-soft); text-decoration: none; transition: transform 0.2s ease, border-color 0.2s ease; box-shadow: 0 4px 20px rgba(0,0,0,0.15);">
               <div>
                 <span style="display:inline-block;font-family:var(--font-mono);font-size:0.75rem;font-weight:600;color:#7c3aed;margin-bottom:0.75rem;">Los Angeles, CA • Small Business Owners</span>
-                <h3 style="font-size: 1.15rem; color: #fff; line-height: 1.4; margin-bottom: 0.75rem; font-weight: 600;">CRM Automation for Small Business: Never Let Inbound Leads Go Cold</h3>
+                <h3 style="font-size: 1.15rem; color: var(--text); line-height: 1.4; margin-bottom: 0.75rem; font-weight: 600;">CRM Automation for Small Business: Never Let Inbound Leads Go Cold</h3>
                 <p style="font-size: 0.88rem; color: var(--text-dim); line-height: 1.6; margin-bottom: 1.25rem;">Comprehensive analysis of crm automation for small business focusing on commercial deployment, hardware specs, and ROI metrics.</p>
               </div>
               <div style="font-family:var(--font-mono);font-size:0.8rem;color:#7c3aed;font-weight:600;display:flex;align-items:center;gap:0.35rem;">
@@ -239,10 +239,10 @@
               </div>
             </a>
             
-            <a href="blog/crm-workflow-automation-guide.html" class="blog-card" style="display: flex; flex-direction: column; justify-content: space-between; padding: 1.75rem; border-radius: 14px; background: rgba(255,255,255,0.03); border: 1px solid var(--border-soft); text-decoration: none; transition: transform 0.2s ease, border-color 0.2s ease; box-shadow: 0 4px 20px rgba(0,0,0,0.15);">
+            <a href="blog/crm-workflow-automation-guide.html" class="blog-card" style="display: flex; flex-direction: column; justify-content: space-between; padding: 1.75rem; border-radius: 14px; background: var(--bg-card); border: 1px solid var(--border-soft); text-decoration: none; transition: transform 0.2s ease, border-color 0.2s ease; box-shadow: 0 4px 20px rgba(0,0,0,0.15);">
               <div>
                 <span style="display:inline-block;font-family:var(--font-mono);font-size:0.75rem;font-weight:600;color:#7c3aed;margin-bottom:0.75rem;">Houston, TX • Sales Operations Managers</span>
-                <h3 style="font-size: 1.15rem; color: #fff; line-height: 1.4; margin-bottom: 0.75rem; font-weight: 600;">CRM Workflow Automation: From First Click to Deal Closed on Autopilot</h3>
+                <h3 style="font-size: 1.15rem; color: var(--text); line-height: 1.4; margin-bottom: 0.75rem; font-weight: 600;">CRM Workflow Automation: From First Click to Deal Closed on Autopilot</h3>
                 <p style="font-size: 0.88rem; color: var(--text-dim); line-height: 1.6; margin-bottom: 1.25rem;">Comprehensive analysis of crm workflow automation focusing on commercial deployment, hardware specs, and ROI metrics.</p>
               </div>
               <div style="font-family:var(--font-mono);font-size:0.8rem;color:#7c3aed;font-weight:600;display:flex;align-items:center;gap:0.35rem;">
@@ -250,10 +250,10 @@
               </div>
             </a>
             
-            <a href="blog/lead-management-automation-guide.html" class="blog-card" style="display: flex; flex-direction: column; justify-content: space-between; padding: 1.75rem; border-radius: 14px; background: rgba(255,255,255,0.03); border: 1px solid var(--border-soft); text-decoration: none; transition: transform 0.2s ease, border-color 0.2s ease; box-shadow: 0 4px 20px rgba(0,0,0,0.15);">
+            <a href="blog/lead-management-automation-guide.html" class="blog-card" style="display: flex; flex-direction: column; justify-content: space-between; padding: 1.75rem; border-radius: 14px; background: var(--bg-card); border: 1px solid var(--border-soft); text-decoration: none; transition: transform 0.2s ease, border-color 0.2s ease; box-shadow: 0 4px 20px rgba(0,0,0,0.15);">
               <div>
                 <span style="display:inline-block;font-family:var(--font-mono);font-size:0.75rem;font-weight:600;color:#7c3aed;margin-bottom:0.75rem;">New York, NY • Growth & Marketing Heads</span>
-                <h3 style="font-size: 1.15rem; color: #fff; line-height: 1.4; margin-bottom: 0.75rem; font-weight: 600;">Lead Management Automation: Speed to Lead Best Practices for High Conversion</h3>
+                <h3 style="font-size: 1.15rem; color: var(--text); line-height: 1.4; margin-bottom: 0.75rem; font-weight: 600;">Lead Management Automation: Speed to Lead Best Practices for High Conversion</h3>
                 <p style="font-size: 0.88rem; color: var(--text-dim); line-height: 1.6; margin-bottom: 1.25rem;">Comprehensive analysis of lead management automation focusing on commercial deployment, hardware specs, and ROI metrics.</p>
               </div>
               <div style="font-family:var(--font-mono);font-size:0.8rem;color:#7c3aed;font-weight:600;display:flex;align-items:center;gap:0.35rem;">
@@ -265,16 +265,16 @@
         </div>
         
         <div class="blog-cat-section" style="margin-bottom: 3.5rem;">
-          <h2 style="font-size: 1.6rem; color: #fff; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.75rem;">
+          <h2 style="font-size: 1.6rem; color: var(--text); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.75rem;">
             <span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:#d97706;"></span>
             Digital Marketing, SEO & GEO
           </h2>
           <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.5rem;">
         
-            <a href="blog/digital-marketing-agency-small-business-guide.html" class="blog-card" style="display: flex; flex-direction: column; justify-content: space-between; padding: 1.75rem; border-radius: 14px; background: rgba(255,255,255,0.03); border: 1px solid var(--border-soft); text-decoration: none; transition: transform 0.2s ease, border-color 0.2s ease; box-shadow: 0 4px 20px rgba(0,0,0,0.15);">
+            <a href="blog/digital-marketing-agency-small-business-guide.html" class="blog-card" style="display: flex; flex-direction: column; justify-content: space-between; padding: 1.75rem; border-radius: 14px; background: var(--bg-card); border: 1px solid var(--border-soft); text-decoration: none; transition: transform 0.2s ease, border-color 0.2s ease; box-shadow: 0 4px 20px rgba(0,0,0,0.15);">
               <div>
                 <span style="display:inline-block;font-family:var(--font-mono);font-size:0.75rem;font-weight:600;color:#d97706;margin-bottom:0.75rem;">Dallas, TX • Small Business Owners</span>
-                <h3 style="font-size: 1.15rem; color: #fff; line-height: 1.4; margin-bottom: 0.75rem; font-weight: 600;">How to Choose a Digital Marketing Agency for Small Business: High ROI Guide</h3>
+                <h3 style="font-size: 1.15rem; color: var(--text); line-height: 1.4; margin-bottom: 0.75rem; font-weight: 600;">How to Choose a Digital Marketing Agency for Small Business: High ROI Guide</h3>
                 <p style="font-size: 0.88rem; color: var(--text-dim); line-height: 1.6; margin-bottom: 1.25rem;">Comprehensive analysis of digital marketing agency for small business focusing on commercial deployment, hardware specs, and ROI metrics.</p>
               </div>
               <div style="font-family:var(--font-mono);font-size:0.8rem;color:#d97706;font-weight:600;display:flex;align-items:center;gap:0.35rem;">
@@ -282,10 +282,10 @@
               </div>
             </a>
             
-            <a href="blog/seo-agency-uk-generative-optimization.html" class="blog-card" style="display: flex; flex-direction: column; justify-content: space-between; padding: 1.75rem; border-radius: 14px; background: rgba(255,255,255,0.03); border: 1px solid var(--border-soft); text-decoration: none; transition: transform 0.2s ease, border-color 0.2s ease; box-shadow: 0 4px 20px rgba(0,0,0,0.15);">
+            <a href="blog/seo-agency-uk-generative-optimization.html" class="blog-card" style="display: flex; flex-direction: column; justify-content: space-between; padding: 1.75rem; border-radius: 14px; background: var(--bg-card); border: 1px solid var(--border-soft); text-decoration: none; transition: transform 0.2s ease, border-color 0.2s ease; box-shadow: 0 4px 20px rgba(0,0,0,0.15);">
               <div>
                 <span style="display:inline-block;font-family:var(--font-mono);font-size:0.75rem;font-weight:600;color:#d97706;margin-bottom:0.75rem;">London & Manchester, UK • UK Managing Directors</span>
-                <h3 style="font-size: 1.15rem; color: #fff; line-height: 1.4; margin-bottom: 0.75rem; font-weight: 600;">Hiring an SEO Agency in the UK: Why Generative Optimization (GEO) Outranks Legacy SEO</h3>
+                <h3 style="font-size: 1.15rem; color: var(--text); line-height: 1.4; margin-bottom: 0.75rem; font-weight: 600;">Hiring an SEO Agency in the UK: Why Generative Optimization (GEO) Outranks Legacy SEO</h3>
                 <p style="font-size: 0.88rem; color: var(--text-dim); line-height: 1.6; margin-bottom: 1.25rem;">Comprehensive analysis of seo agency uk focusing on commercial deployment, hardware specs, and ROI metrics.</p>
               </div>
               <div style="font-family:var(--font-mono);font-size:0.8rem;color:#d97706;font-weight:600;display:flex;align-items:center;gap:0.35rem;">
@@ -293,10 +293,10 @@
               </div>
             </a>
             
-            <a href="blog/hotel-digital-marketing-guide.html" class="blog-card" style="display: flex; flex-direction: column; justify-content: space-between; padding: 1.75rem; border-radius: 14px; background: rgba(255,255,255,0.03); border: 1px solid var(--border-soft); text-decoration: none; transition: transform 0.2s ease, border-color 0.2s ease; box-shadow: 0 4px 20px rgba(0,0,0,0.15);">
+            <a href="blog/hotel-digital-marketing-guide.html" class="blog-card" style="display: flex; flex-direction: column; justify-content: space-between; padding: 1.75rem; border-radius: 14px; background: var(--bg-card); border: 1px solid var(--border-soft); text-decoration: none; transition: transform 0.2s ease, border-color 0.2s ease; box-shadow: 0 4px 20px rgba(0,0,0,0.15);">
               <div>
                 <span style="display:inline-block;font-family:var(--font-mono);font-size:0.75rem;font-weight:600;color:#d97706;margin-bottom:0.75rem;">Orlando, FL • Hotel General Managers</span>
-                <h3 style="font-size: 1.15rem; color: #fff; line-height: 1.4; margin-bottom: 0.75rem; font-weight: 600;">Hotel Digital Marketing Strategies: Driving Direct Bookings and Local Footfall</h3>
+                <h3 style="font-size: 1.15rem; color: var(--text); line-height: 1.4; margin-bottom: 0.75rem; font-weight: 600;">Hotel Digital Marketing Strategies: Driving Direct Bookings and Local Footfall</h3>
                 <p style="font-size: 0.88rem; color: var(--text-dim); line-height: 1.6; margin-bottom: 1.25rem;">Comprehensive analysis of hotel digital marketing services focusing on commercial deployment, hardware specs, and ROI metrics.</p>
               </div>
               <div style="font-family:var(--font-mono);font-size:0.8rem;color:#d97706;font-weight:600;display:flex;align-items:center;gap:0.35rem;">
@@ -304,10 +304,10 @@
               </div>
             </a>
             
-            <a href="blog/generative-engine-optimization-guide.html" class="blog-card" style="display: flex; flex-direction: column; justify-content: space-between; padding: 1.75rem; border-radius: 14px; background: rgba(255,255,255,0.03); border: 1px solid var(--border-soft); text-decoration: none; transition: transform 0.2s ease, border-color 0.2s ease; box-shadow: 0 4px 20px rgba(0,0,0,0.15);">
+            <a href="blog/generative-engine-optimization-guide.html" class="blog-card" style="display: flex; flex-direction: column; justify-content: space-between; padding: 1.75rem; border-radius: 14px; background: var(--bg-card); border: 1px solid var(--border-soft); text-decoration: none; transition: transform 0.2s ease, border-color 0.2s ease; box-shadow: 0 4px 20px rgba(0,0,0,0.15);">
               <div>
                 <span style="display:inline-block;font-family:var(--font-mono);font-size:0.75rem;font-weight:600;color:#d97706;margin-bottom:0.75rem;">London, UK • Digital Leaders & CMOs</span>
-                <h3 style="font-size: 1.15rem; color: #fff; line-height: 1.4; margin-bottom: 0.75rem; font-weight: 600;">Generative Engine Optimization (GEO): How AI Search Engines Cite Brands</h3>
+                <h3 style="font-size: 1.15rem; color: var(--text); line-height: 1.4; margin-bottom: 0.75rem; font-weight: 600;">Generative Engine Optimization (GEO): How AI Search Engines Cite Brands</h3>
                 <p style="font-size: 0.88rem; color: var(--text-dim); line-height: 1.6; margin-bottom: 1.25rem;">Comprehensive analysis of geo services for ai search focusing on commercial deployment, hardware specs, and ROI metrics.</p>
               </div>
               <div style="font-family:var(--font-mono);font-size:0.8rem;color:#d97706;font-weight:600;display:flex;align-items:center;gap:0.35rem;">
