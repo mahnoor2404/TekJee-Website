@@ -37,8 +37,11 @@
     soundBtn.setAttribute('aria-label', soundOn ? 'Mute sound' : 'Turn sound on');
   };
 
+  /* the hero clip starts once the page has finished loading, so its download doesn't compete with the
+     CSS, fonts and first paint on slow phone connections (its first frame shows as the poster meanwhile) */
+  var pageLoaded = document.readyState === 'complete';
   var playActive = function(){
-    if (showingText || !onScreen) return;
+    if (!pageLoaded || showingText || !onScreen) return;
     activeHero.muted = !soundOn;
     activeHero.play().catch(function(){
       if (!activeHero.muted){
@@ -79,7 +82,8 @@
   if (heroVideo2) heroVideo2.addEventListener('ended', showText);
 
   heroVideo.addEventListener('loadeddata', playActive, {once:true});
-  playActive();
+  if (pageLoaded) playActive();
+  else window.addEventListener('load', function(){ pageLoaded = true; playActive(); }, {once:true});
 
   var setSound = function(on){
     soundOn = on;

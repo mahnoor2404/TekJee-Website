@@ -15,9 +15,11 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;800&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Caveat:wght@500;600&display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;800&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Caveat:wght@500;600&display=swap" media="print" onload="this.media='all'">
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;800&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Caveat:wght@500;600&display=swap"></noscript>
+<link rel="preconnect" href="https://feeds.behold.so" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;800&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;800&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;800&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"></noscript>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&display=swap&text=%20%26ABCDEGIMORSWabcdefgiklmnoprstuv" media="print" onload="this.media='all'">
 <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
@@ -58,7 +60,7 @@
 <main id="view-home" class="page-view">
   <section class="video-hero text-hidden">
     <div class="hero-frame">
-      <video id="heroVideo" class="scroll-video" src="assets/hero-tech.mp4" playsinline preload="metadata" aria-hidden="true"></video>
+      <video id="heroVideo" class="scroll-video" playsinline preload="none" poster="assets/hero-tech-poster.webp" aria-hidden="true"><source src="assets/hero-tech-sm.mp4" type="video/mp4" media="(max-width: 767px)"><source src="assets/hero-tech.mp4" type="video/mp4"></video>
       <button id="heroSound" class="hero-sound" type="button" aria-pressed="false" aria-label="Turn sound on">
         <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <path d="M11 5 6 9H2v6h4l5 4V5z" fill="currentColor"/>
@@ -309,7 +311,7 @@
         </div>
       </div>
       <figure class="ai-figure pg-reveal">
-        <video class="ai-video" src="assets/ai-solutions.mp4" muted loop playsinline preload="metadata" aria-label="A friendly AI assistant robot beside four steps: Teach, Learn, Remember and Run"></video>
+        <video class="ai-video" muted loop playsinline preload="none" poster="assets/ai-solutions-poster.webp" aria-label="A friendly AI assistant robot beside four steps: Teach, Learn, Remember and Run"><source src="assets/ai-solutions-sm.mp4" type="video/mp4" media="(max-width: 767px)"><source src="assets/ai-solutions.mp4" type="video/mp4"></video>
       </figure>
     </div>
   </section>
