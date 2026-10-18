@@ -163,7 +163,15 @@
     function scheduleNext(){ if (!running) return; activeTween = gsap.delayedCall(DWELL, advanceStep); }
     scheduleNext();
 
-    gsap.ticker.add(function(){ if (running) updateCardFocus(gsap.getProperty(track, 'x')); });
+    /* recompute only when on screen and the track has moved (the card tweens are at rest during the dwell) */
+    var lastX = null;
+    gsap.ticker.add(function(){
+      if (!running) return;
+      var x = gsap.getProperty(track, 'x');
+      if (x === lastX) return;
+      lastX = x;
+      updateCardFocus(x);
+    });
 
     if ('IntersectionObserver' in window){
       new IntersectionObserver(function(entries){

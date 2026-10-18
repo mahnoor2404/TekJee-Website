@@ -747,8 +747,15 @@
     }
     scheduleNext();
 
+    /* only recompute while the carousel is on screen and the track has actually moved: during the
+       dwell (and off screen) the card tweens are already at rest, so re-issuing them every frame was wasted work */
+    var lastX = null;
     gsap.ticker.add(function(){
-      updateCardFocus(gsap.getProperty(track, 'x'));
+      if (!running) return;
+      var x = gsap.getProperty(track, 'x');
+      if (x === lastX) return;
+      lastX = x;
+      updateCardFocus(x);
     });
 
     if ('IntersectionObserver' in window){
