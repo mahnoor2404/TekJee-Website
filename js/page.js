@@ -23,6 +23,41 @@
   });
 })();
 
+/* Explainer scenes (.xs): the SVG animation plays only while the scene is on screen */
+(function(){
+  var scenes = document.querySelectorAll('.xs');
+  if (!scenes.length) return;
+  if (!('IntersectionObserver' in window)) {
+    Array.prototype.forEach.call(scenes, function(s){ s.classList.add('is-on'); });
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ e.target.classList.toggle('is-on', e.isIntersecting); });
+  }, {threshold: 0.25});
+  Array.prototype.forEach.call(scenes, function(s){ io.observe(s); });
+
+  /* on phones a wide scene scrolls sideways; follow the part that is animating (data-follow gives the
+     scroll position for each of the 4 stages, 0 = left edge, 1 = right edge) until the visitor scrolls it */
+  if (!document.getAnimations) return;
+  Array.prototype.forEach.call(scenes, function(s){
+    var box = s.querySelector('.xs-scroll'), pill = s.querySelector('.xs-steps li');
+    var stops = (s.getAttribute('data-follow') || '').split(',').map(Number);
+    if (!box || !pill || stops.length !== 4) return;
+    var stage = -1, userMoved = false;
+    ['touchstart', 'wheel', 'keydown'].forEach(function(ev){ box.addEventListener(ev, function(){ userMoved = true; }, {passive: true}); });
+    setInterval(function(){
+      var max = box.scrollWidth - box.clientWidth;
+      if (userMoved || max < 8 || !s.classList.contains('is-on')) return;
+      var anim = pill.getAnimations()[0];
+      if (!anim || anim.currentTime == null) return;
+      var now = Math.floor(((anim.currentTime + 10000) % 10000) / 2500);
+      if (now === stage) return;
+      stage = now;
+      box.scrollTo({left: stops[stage] * max, behavior: 'smooth'});
+    }, 200);
+  });
+})();
+
 /* AI section video: muted, loops, plays only while it is on screen */
 (function(){
   var v = document.querySelector('.ai-video');

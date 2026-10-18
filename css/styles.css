@@ -1625,3 +1625,130 @@
     .aib-stage.is-hi .aib-fore-r, .aib-stage.is-hi .aib-head{animation:none;}
     .aib-arm-l, .aib-arm-r, .aib-fore-l, .aib-fore-r, .aib-head, .aib-say{transition:none;}
   }
+
+/* ---- Explainer scenes: small animated SVG stories on the service pages (Digital Marketing, Web, CRM)
+   that show in pictures what the service does. One 10s loop split into four 2.5s stages; the step pills
+   under the drawing light up with the stage that is playing. Base styles are the finished picture, the
+   keyframes hide and reveal parts, so with reduced motion (animation off) the full picture shows.
+   page.js adds .is-on while a scene is on screen; off screen it is paused. ---- */
+  .xs{
+    --xs-accent:#0a2fd6;
+    margin-top:28px;background:var(--bg-card);border:1px solid var(--border);border-radius:22px;
+    padding:18px 18px 14px;box-shadow:0 22px 44px -28px rgba(20,60,130,.4);
+  }
+  .xs-wide{margin:0 0 34px;}
+  .xs svg{display:block;width:100%;height:auto;overflow:visible;}
+  .xs svg *{transform-box:fill-box;transform-origin:center;}
+  .xs-steps{list-style:none;margin:10px 0 0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:8px;}
+  .xs-steps li{
+    font-family:var(--font-mono);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;
+    text-align:center;color:var(--text-dim);padding:7px 4px;border-radius:999px;line-height:1.3;
+    animation:xs-pill 10s linear infinite;animation-delay:calc((var(--i) - 4) * 2.5s);
+  }
+  .xs-steps li b{display:block;font-size:.9rem;color:var(--xs-accent);}
+  :root[data-theme="dark"] .xs{--xs-accent:#5ab4ff;}
+  .xs:not(.is-on) *, .xs:not(.is-on) svg *{animation-play-state:paused !important;}
+
+  /* scene colours that follow light/dark mode */
+  .xs .s-bg{fill:var(--bg-raised);}
+  .xs .s-card{fill:var(--bg-card);stroke:var(--border);stroke-width:2;}
+  .xs .s-line{fill:var(--border);}
+  .xs .s-stroke{fill:none;stroke:var(--border);stroke-width:2;}
+  .xs .s-text{fill:var(--text);font-family:var(--font-body);font-weight:700;}
+  .xs .s-dim{fill:var(--text-dim);font-family:var(--font-mono);}
+
+  /* dark mode: lift the navy shapes and blue text off the dark background */
+  :root[data-theme="dark"] .xs rect[fill="#0c2340"], :root[data-theme="dark"] .xs path[fill="#0c2340"]{fill:#2c4a78;}
+  :root[data-theme="dark"] .xs rect[fill="#1c2c4c"]{fill:#3a5680;}
+  :root[data-theme="dark"] .xs text[fill="#0a2fd6"], :root[data-theme="dark"] .xs tspan[fill="#0a2fd6"]{fill:#7cc4ff;}
+
+  /* stage reveals: 1 = 0-25%, 2 = 25-50%, 3 = 50-75%, 4 = 75-100% of the loop */
+  .xs .a-show1{animation:xs-show1 10s ease-out infinite both;}
+  .xs .a-show2{animation:xs-show2 10s ease-out infinite both;}
+  .xs .a-show3{animation:xs-show3 10s ease-out infinite both;}
+  .xs .a-show4{animation:xs-show4 10s ease-out infinite both;}
+  .xs .a-pop2{animation:xs-pop2 10s cubic-bezier(.3,1.5,.5,1) infinite both;}
+  .xs .a-pop3{animation:xs-pop3 10s cubic-bezier(.3,1.5,.5,1) infinite both;}
+  .xs .a-pop4{animation:xs-pop4 10s cubic-bezier(.3,1.5,.5,1) infinite both;}
+  /* later-in-stage reveals (instead of long delays, which would spill into the next loop) */
+  .xs .a-show1l{animation:xs-show1l 10s ease-out infinite both;}
+  .xs .a-pop2l{animation:xs-pop2l 10s cubic-bezier(.3,1.5,.5,1) infinite both;}
+  .xs .a-pop3l{animation:xs-pop3l 10s cubic-bezier(.3,1.5,.5,1) infinite both;}
+  .xs .a-pop4l{animation:xs-pop4l 10s cubic-bezier(.3,1.5,.5,1) infinite both;}
+  @keyframes xs-show1l{0%,12%{opacity:0;transform:translateY(8px);}16%,94%{opacity:1;transform:none;}100%{opacity:0;}}
+  @keyframes xs-pop2l{0%,37%{opacity:0;transform:scale(.3);}42%,54%{opacity:1;transform:none;}60%,100%{opacity:0;transform:scale(.3);}}
+  @keyframes xs-pop3l{0%,67%{opacity:0;transform:scale(.3);}72%,94%{opacity:1;transform:none;}100%{opacity:0;}}
+  @keyframes xs-pop4l{0%,85%{opacity:0;transform:scale(.3);}90%,95%{opacity:1;transform:none;}100%{opacity:0;}}
+  .xs .a-grow4{transform-origin:center bottom;animation:xs-grow4 10s cubic-bezier(.2,.8,.2,1) infinite both;}
+  .xs .a-draw4{stroke-dasharray:1;animation:xs-draw4 10s ease-in-out infinite both;}
+  .xs .a-bob{animation:xs-bob 2.4s ease-in-out infinite alternate;}
+  .xs .a-blink{animation:xs-blink 4s infinite;}
+  .xs .a-type{animation:xs-type .5s ease-in-out infinite alternate;}
+
+  @keyframes xs-pill{0%,24%{background:color-mix(in srgb, var(--xs-accent) 13%, transparent);color:var(--text);}25%,100%{background:transparent;color:var(--text-dim);}}
+  @keyframes xs-show1{0%{opacity:0;transform:translateY(10px);}5%,94%{opacity:1;transform:none;}100%{opacity:0;}}
+  @keyframes xs-show2{0%,25%{opacity:0;transform:translateY(10px);}30%,94%{opacity:1;transform:none;}100%{opacity:0;}}
+  @keyframes xs-show3{0%,50%{opacity:0;transform:translateY(10px);}55%,94%{opacity:1;transform:none;}100%{opacity:0;}}
+  @keyframes xs-show4{0%,75%{opacity:0;transform:translateY(10px);}80%,94%{opacity:1;transform:none;}100%{opacity:0;}}
+  @keyframes xs-pop2{0%,25%{opacity:0;transform:scale(.3);}30%,94%{opacity:1;transform:none;}100%{opacity:0;}}
+  @keyframes xs-pop3{0%,50%{opacity:0;transform:scale(.3);}55%,94%{opacity:1;transform:none;}100%{opacity:0;}}
+  @keyframes xs-pop4{0%,75%{opacity:0;transform:scale(.3);}81%,94%{opacity:1;transform:none;}100%{opacity:0;}}
+  @keyframes xs-grow4{0%,75%{transform:scaleY(0);}86%,95%{transform:none;}100%{transform:scaleY(0);}}
+  @keyframes xs-draw4{0%,80%{stroke-dashoffset:1;}92%,95%{stroke-dashoffset:0;}100%{stroke-dashoffset:1;}}
+  @keyframes xs-bob{from{transform:translateY(0);}to{transform:translateY(-4px);}}
+  @keyframes xs-blink{0%,92%,100%{transform:none;}95%{transform:scaleY(.1);}}
+  @keyframes xs-type{from{transform:translateY(0);}to{transform:translateY(-3px);}}
+
+  /* Digital Marketing: reactions fly from the phone to the crowd, who then walk into the shop */
+  .xs .dm-fly{animation:xs-dm-fly 10s ease-in-out infinite both;}
+  .xs .dm-wave{transform-origin:left center;animation:xs-dm-wave 10s ease-out infinite both;}
+  .xs .dm-person{animation:xs-dm-visit 10s ease-in-out infinite both;}
+  @keyframes xs-dm-fly{0%,25%{opacity:0;transform:translate(0,0) scale(.4);}29%{opacity:1;}44%{opacity:1;transform:translate(var(--dx),var(--dy)) scale(1);}50%,100%{opacity:0;transform:translate(var(--dx),var(--dy)) scale(1.2);}}
+  @keyframes xs-dm-wave{0%,25%{opacity:0;transform:scale(.6);}32%{opacity:1;}48%,100%{opacity:0;transform:scale(1.15);}}
+  @keyframes xs-dm-visit{0%{opacity:0;transform:translate(0,0);}6%,30%{opacity:.35;transform:translate(0,0);}44%,52%{opacity:1;transform:translate(0,0);}70%{opacity:1;transform:translate(var(--dx),var(--dy));}76%,100%{opacity:0;transform:translate(var(--dx),var(--dy));}}
+
+  /* Web: wireframe first, then the real blocks drop in; your result climbs to the top of the search list */
+  .xs .wd-wire{animation:xs-wd-wire 10s ease-out infinite both;}
+  .xs .wd-drop{animation:xs-wd-drop 10s cubic-bezier(.3,1.3,.5,1) infinite both;}
+  .xs .wd-query{transform-origin:right center;animation:xs-wd-query 10s steps(18) infinite both;}
+  .xs .wd-mine{animation:xs-wd-mine 10s cubic-bezier(.5,0,.2,1) infinite both;}
+  .xs .wd-other{animation:xs-wd-other 10s cubic-bezier(.5,0,.2,1) infinite both;}
+  .xs .wd-dots{animation:xs-wd-dots 10s infinite both;}
+  @keyframes xs-wd-wire{0%{opacity:0;}5%,24%{opacity:1;}32%,100%{opacity:0;}}
+  @keyframes xs-wd-drop{0%,25%{opacity:0;transform:translateY(-26px);}31%,94%{opacity:1;transform:none;}100%{opacity:0;}}
+  @keyframes xs-wd-query{0%,50%{transform:none;}58%,94%{transform:scaleX(0);}100%{transform:none;}}
+  @keyframes xs-wd-mine{0%,60%{transform:translateY(56px);}70%,100%{transform:none;}}
+  @keyframes xs-wd-other{0%,60%{transform:translateY(0);}70%,100%{transform:translateY(28px);}}
+  @keyframes xs-wd-dots{0%,76%{opacity:0;}78%,82%{opacity:1;}84%,100%{opacity:0;}}
+
+  /* CRM: the lead card travels New -> Contacted -> Won; messages fly back to the phone of the customer */
+  .xs .crm-lead{animation:xs-crm-lead 10s cubic-bezier(.5,0,.2,1) infinite both;}
+  .xs .crm-msg{animation:xs-crm-msg 10s ease-in-out infinite both;}
+  .xs .crm-buzz{animation:xs-crm-buzz 10s linear infinite both;}
+  .xs .crm-fill{transform-origin:left center;animation:xs-crm-fill 10s ease-out infinite both;}
+  @keyframes xs-crm-lead{
+    0%,22%{opacity:0;transform:translate(var(--fx),var(--fy)) scale(.35);}
+    26%{opacity:1;transform:translate(var(--fx),var(--fy)) scale(.45);}
+    38%,52%{opacity:1;transform:none;}
+    62%,76%{opacity:1;transform:translate(var(--c2),0);}
+    86%,95%{opacity:1;transform:translate(var(--c3),0);}
+    100%{opacity:0;transform:translate(var(--c3),0);}
+  }
+  @keyframes xs-crm-msg{0%,52%{opacity:0;transform:translate(0,0) scale(.5);}55%{opacity:1;transform:translate(0,0) scale(1);}68%{opacity:1;transform:translate(var(--dx),var(--dy)) scale(.8);}72%,100%{opacity:0;transform:translate(var(--dx),var(--dy)) scale(.5);}}
+  @keyframes xs-crm-buzz{0%,66%{transform:none;}67%{transform:rotate(-6deg);}68%{transform:rotate(6deg);}69%{transform:rotate(-6deg);}70%{transform:rotate(6deg);}71%,100%{transform:none;}}
+  @keyframes xs-crm-fill{0%,2%{transform:scaleX(0);}10%,94%{transform:none;}100%{transform:scaleX(0);}}
+
+  /* wide scenes keep a readable size on phones and scroll sideways instead of shrinking */
+  .xs-scroll{overflow-x:auto;scrollbar-width:thin;border-radius:16px;}
+  .xs-scroll:focus-visible{outline:2px solid var(--xs-accent);outline-offset:2px;}
+  @media (max-width:700px){ .xs-scroll svg{width:680px;max-width:none;} }
+  @media (max-width:600px){
+    .xs{padding:12px 10px 10px;border-radius:18px;}
+    .xs-steps{gap:4px;}
+    .xs-steps li{font-size:.56rem;letter-spacing:.03em;padding:6px 2px;}
+    .xs-steps li b{font-size:.8rem;}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .xs *, .xs svg *{animation:none !important;}
+    .xs .wd-wire, .xs .wd-query, .xs .wd-dots{display:none;}
+  }
