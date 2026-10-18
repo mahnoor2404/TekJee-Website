@@ -298,7 +298,15 @@
   }
 
   function ready(){
-    document.querySelectorAll('canvas[data-particles]').forEach(initOne);
+    if ('requestIdleCallback' in window) {
+      window.requestIdleCallback(function(){
+        document.querySelectorAll('canvas[data-particles]').forEach(initOne);
+      }, {timeout: 600});
+    } else {
+      setTimeout(function(){
+        document.querySelectorAll('canvas[data-particles]').forEach(initOne);
+      }, 100);
+    }
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', ready); else ready();
 })();

@@ -1,0 +1,14 @@
+# Private Plans, Audits & Document Files (Do not push)
+*.xlsx
+*.xls
+~$*
+*.zip
+*.pdf
+
+# Internal Dev/Audit report
+audit-report.html
+
+# OS and temporary files
+.DS_Store
+Thumbs.db
+.gemini/

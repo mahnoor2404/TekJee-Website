@@ -8,6 +8,9 @@ Allow: /
 User-agent: OAI-SearchBot
 Allow: /
 
+User-agent: GPTBot
+Allow: /
+
 User-agent: ChatGPT-User
 Allow: /
 
@@ -20,5 +23,9 @@ Allow: /
 User-agent: Google-Extended
 Allow: /
 
+User-agent: Applebot-Extended
+Allow: /
+
 # XML Sitemap
 Sitemap: https://tekjee.com/sitemap.xml
+
