@@ -40,6 +40,7 @@
   /* the hero clip starts once the page has finished loading, so its download doesn't compete with the
      CSS, fonts and first paint on slow phone connections (its first frame shows as the poster meanwhile) */
   var pageLoaded = document.readyState === 'complete';
+  var isPhone = window.matchMedia && window.matchMedia('(max-width: 767px)').matches;
   var playActive = function(){
     if (!pageLoaded || showingText || !onScreen) return;
     activeHero.muted = !soundOn;
@@ -81,9 +82,32 @@
   heroVideo.addEventListener('ended', heroVideo2 ? function(){ showClip(heroVideo2); } : showText);
   if (heroVideo2) heroVideo2.addEventListener('ended', showText);
 
-  heroVideo.addEventListener('loadeddata', playActive, {once:true});
-  if (pageLoaded) playActive();
-  else window.addEventListener('load', function(){ pageLoaded = true; playActive(); }, {once:true});
+  var startMobile = function(){
+    ['touchstart', 'pointerdown', 'scroll', 'wheel', 'keydown'].forEach(function(ev){
+      window.removeEventListener(ev, startMobile, {passive: true});
+    });
+    pageLoaded = true;
+    playActive();
+  };
+
+  if (isPhone){
+    window.addEventListener('load', function(){
+      ['touchstart', 'pointerdown', 'scroll', 'wheel', 'keydown'].forEach(function(ev){
+        window.addEventListener(ev, startMobile, {passive: true, once: true});
+      });
+      if ('requestIdleCallback' in window){
+        window.requestIdleCallback(function(){
+          setTimeout(function(){ if (onScreen && !activeHero.currentTime){ pageLoaded = true; playActive(); } }, 3500);
+        });
+      } else {
+        setTimeout(function(){ if (onScreen && !activeHero.currentTime){ pageLoaded = true; playActive(); } }, 4000);
+      }
+    }, {once: true});
+  } else {
+    heroVideo.addEventListener('loadeddata', playActive, {once:true});
+    if (pageLoaded) playActive();
+    else window.addEventListener('load', function(){ pageLoaded = true; playActive(); }, {once:true});
+  }
 
   var setSound = function(on){
     soundOn = on;
@@ -95,6 +119,8 @@
       e.stopPropagation();
       userMuted = soundOn;
       setSound(!soundOn);
+      pageLoaded = true;
+      playActive();
     });
   }
   /* first real interaction anywhere on the page unlocks sound */
@@ -290,8 +316,17 @@
       if (!shapes) shapes = [sample(drawMkt), sample(drawAI), sample(drawWeb), sample(drawBack), sample(drawCRM), sample(drawSEO), sample(drawCam)];
       return shapes;
     }
-    if ('requestIdleCallback' in window) window.requestIdleCallback(getShapes, {timeout: 4000});
-    else setTimeout(getShapes, 1500);
+    var prismSection = document.getElementById('why');
+    if ('IntersectionObserver' in window && prismSection){
+      var shapesIo = new IntersectionObserver(function(entries){
+        if (entries[0].isIntersecting){
+          shapesIo.disconnect();
+          if ('requestIdleCallback' in window) window.requestIdleCallback(getShapes);
+          else setTimeout(getShapes, 0);
+        }
+      }, {rootMargin: '600px 0px'});
+      shapesIo.observe(prismSection);
+    }
 
     /* ---- particles: start as a globe (Fibonacci sphere) ---- */
     var cx = new Float32Array(N), cy = new Float32Array(N), cz = new Float32Array(N);
@@ -449,14 +484,17 @@
     }
 
     resize();
-    draw(0);
     window.addEventListener('resize', function(){ resize(); draw(performance.now()); });
 
-    if (!reduceMotion){
+    if (reduceMotion) draw(0);
+    else {
+      /* the globe sits far down the page: it is drawn only while on (or just about to come on) screen,
+         instead of drawing ~1900 particles every frame during page load before the observer reports */
       if ('IntersectionObserver' in window){
+        visible = false;
         new IntersectionObserver(function(entries){
           visible = entries[0].isIntersecting;
-        }, {threshold: 0.01}).observe(canvas);
+        }, {rootMargin: '200px 0px', threshold: 0}).observe(canvas);
       }
       gsap.ticker.add(function(){
         if (visible) draw(performance.now());
@@ -630,7 +668,9 @@
   var track = document.getElementById('carouselTrack');
   var viewport = document.querySelector('.carousel-viewport');
 
-  if (track && viewport){
+  /* set up in its own task, so the page's start-up script isn't one long block on phones */
+  if (track && viewport) setTimeout(initCarousel, 0);
+  function initCarousel(){
     var originalCards = Array.prototype.slice.call(track.querySelectorAll('.service-card'));
     originalCards.forEach(function(card){
       var clone = card.cloneNode(true);
@@ -786,5 +826,6 @@
     });
 
     updateCardFocus(centerOffset);
+    lastX = centerOffset;
   }
 })();

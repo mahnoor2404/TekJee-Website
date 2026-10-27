@@ -59,9 +59,19 @@
     return true;
   }
 
+  /* activate fallback iframes if the live feed has not replaced them yet */
+  function activateFallbackFrames(){
+    var frames = section.querySelectorAll('iframe[data-src]');
+    Array.prototype.forEach.call(frames, function(fr){
+      var ds = fr.getAttribute('data-src');
+      if (ds && !fr.getAttribute('src')) fr.setAttribute('src', ds);
+    });
+  }
+
   /* the feed is fetched when the gallery gets near the screen (it sits far down the page), so it doesn't
      compete with the first paint; the cards already in the page show until it arrives */
   function loadFeed(){
+    activateFallbackFrames();
     fetch(FEED_URL).then(function(res){ return res.ok ? res.json() : null; })
       .then(function(feed){ if (feed && feed.posts) render(feed.posts); })
       .catch(function(){ /* keep the reels already in the page */ });

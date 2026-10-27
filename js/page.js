@@ -232,7 +232,15 @@
   });
 })();
 
-/* TEKJEE assistant: a small chat window. It answers from a built-in knowledge base about TEKJEE (no server, no external service). */
+/* booking requests and assistant chat transcripts are emailed by FormSubmit (formsubmit.co) to FORM_TO, with a copy to FORM_CC.
+   A form on a new address or domain must be activated once from the email FormSubmit sends to FORM_TO
+   on its first request; that email also gives a random alias that can replace the address in the URL. */
+var FORM_ENDPOINT = 'https://formsubmit.co/ajax/ibrahimqadir35@gmail.com';
+var FORM_CC = 'ibrahimqadir@tekjee.com';
+
+/* TEKJEE assistant: a small chat window. It answers from a built-in knowledge base about TEKJEE (no external AI service).
+   It asks for the visitor's email first; when the chat ends (closed, or the visitor leaves the page) the whole
+   conversation is emailed to the TEKJEE team through FormSubmit, with the visitor's email as the reply-to address. */
 (function(){
   var bot = document.getElementById('tekBot');
   if (!bot) return;
@@ -296,11 +304,61 @@
   var log = document.getElementById('tekBotLog'), chips = document.getElementById('tekBotChips');
   var form = document.getElementById('tekBotForm'), input = document.getElementById('tekBotInput');
   var timers = [], busy = false, started = false, history = [];
+  var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  var visitorEmail = '', sentLen = 0;
+  try {
+    visitorEmail = sessionStorage.getItem('tekBotEmail') || '';
+    sentLen = +sessionStorage.getItem('tekBotSent') || 0;
+  } catch(e){}
 
   function later(fn, ms){ var id = setTimeout(fn, ms); timers.push(id); return id; }
   function pose(p){ bot.setAttribute('data-pose', p); }
   function scrollDown(){ log.scrollTop = log.scrollHeight; }
   function save(){ try { sessionStorage.setItem('tekBotChat', JSON.stringify(history.slice(-40))); } catch(e){} }
+
+  /* the message box takes the visitor's email until one is given, then normal messages */
+  function emailMode(on){
+    input.type = on ? 'email' : 'text';
+    input.placeholder = on ? 'Your email address' : 'Type a message...';
+    input.setAttribute('autocomplete', on ? 'email' : 'off');
+  }
+  function askEmail(){
+    emailMode(true);
+    botSay([{text: 'Before we start, what’s your email address? A copy of this chat goes to the TEKJEE team so they can follow up with you.'}]);
+  }
+  function takeEmail(text){
+    if (!EMAIL_RE.test(text)){
+      botSay([{text: 'That doesn’t look like an email address. Please type it like name@example.com.'}]);
+      return;
+    }
+    visitorEmail = text;
+    try { sessionStorage.setItem('tekBotEmail', visitorEmail); } catch(e){}
+    emailMode(false);
+    botSay([{text: 'Thanks! How can I help you today? Ask me about TEKJEE’s services, GEO or how to get started.'}], showChips);
+  }
+
+  /* emails the whole chat to the TEKJEE team, once there is something new since the last copy.
+     sendBeacon (or a keepalive fetch) still delivers it while the page is being closed. */
+  function sendTranscript(){
+    if (!visitorEmail || history.length <= sentLen) return;
+    var asked = history.some(function(m){ return m.f === 'me' && !m.e; });
+    if (!asked) return;
+    sentLen = history.length;
+    try { sessionStorage.setItem('tekBotSent', String(sentLen)); } catch(e){}
+    var data = new URLSearchParams();
+    data.append('_subject', 'New chatbot conversation from ' + visitorEmail);
+    data.append('_template', 'table');
+    data.append('_cc', FORM_CC);
+    data.append('_replyto', visitorEmail);
+    data.append('Visitor email', visitorEmail);
+    data.append('Sent from page', location.href);
+    history.forEach(function(m, i){
+      var n = i + 1 < 10 ? '0' + (i + 1) : String(i + 1);
+      data.append(n + ' ' + (m.f === 'me' ? 'Visitor' : 'TEKJEE assistant'), m.t);
+    });
+    if (navigator.sendBeacon && navigator.sendBeacon(FORM_ENDPOINT, data)) return;
+    fetch(FORM_ENDPOINT, {method: 'POST', body: data, keepalive: true, headers: {'Accept': 'application/json'}}).catch(function(){});
+  }
 
   function addMsg(from, text, links, silent){
     var el = document.createElement('div');
@@ -350,6 +408,7 @@
     addMsg('me', text);
     input.value = '';
     chips.innerHTML = '';
+    if (!visitorEmail){ history[history.length - 1].e = 1; save(); takeEmail(text); return; }
     var r = answer(text);
     botSay([r], showChips);
   }
@@ -360,10 +419,14 @@
     if (saved && saved.length){
       history = saved;
       saved.forEach(function(m){ addMsg(m.f, m.t, m.l, true); });
-      showChips();
+      if (visitorEmail) showChips(); else askEmail();
       return;
     }
     pose('wave');
+    if (!visitorEmail){
+      botSay([{text: 'Hello! I’m the TEKJEE assistant.'}], askEmail);
+      return;
+    }
     botSay([
       {text: 'Hello! I’m the TEKJEE assistant.'},
       {text: 'How can I help you today? Ask me about TEKJEE’s services, GEO or how to get started.'}
@@ -379,6 +442,7 @@
       scrollDown();
     } else {
       pose('stand');
+      sendTranscript();
     }
   }
 
@@ -386,10 +450,14 @@
   later(function(){ if (panel.hidden){ bubble.classList.remove('show'); pose('stand'); } }, 7500);
   btn.addEventListener('click', function(){ timers.forEach(clearTimeout); setOpen(panel.hidden); });
   bot.querySelector('.bot-close').addEventListener('click', function(){ setOpen(false); btn.focus(); });
+  form.noValidate = true; /* the assistant checks the email itself, in the chat */
   form.addEventListener('submit', function(e){ e.preventDefault(); send(input.value); });
   btn.addEventListener('mouseenter', function(){ if (panel.hidden) pose('wave'); });
   btn.addEventListener('mouseleave', function(){ if (panel.hidden) pose('stand'); });
   document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && !panel.hidden) setOpen(false); });
+  /* leaving the page (or closing the tab) also ends the chat */
+  window.addEventListener('pagehide', sendTranscript);
+  document.addEventListener('visibilitychange', function(){ if (document.visibilityState === 'hidden') sendTranscript(); });
 })();
 
 /* Services dropdown in the nav: hover opens it on desktop, click/tap toggles it,
@@ -416,15 +484,18 @@
   var inner = header && header.querySelector('.nav-inner');
   if (!links || !inner) return;
   links.id = links.id || 'navLinks';
-  var btn = document.createElement('button');
-  btn.type = 'button';
-  btn.className = 'nav-burger';
-  btn.setAttribute('aria-controls', links.id);
-  btn.setAttribute('aria-expanded', 'false');
-  btn.setAttribute('aria-label', 'Open menu');
-  btn.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path class="nb-1" d="M4 7h16"/><path class="nb-2" d="M4 12h16"/><path class="nb-3" d="M4 17h16"/></svg>';
-  var toggle = inner.querySelector('.theme-toggle');
-  inner.insertBefore(btn, toggle || inner.lastElementChild);
+  var btn = inner.querySelector('.nav-burger');
+  if (!btn){
+    btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'nav-burger';
+    btn.setAttribute('aria-controls', links.id);
+    btn.setAttribute('aria-expanded', 'false');
+    btn.setAttribute('aria-label', 'Open menu');
+    btn.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path class="nb-1" d="M4 7h16"/><path class="nb-2" d="M4 12h16"/><path class="nb-3" d="M4 17h16"/></svg>';
+    var toggle = inner.querySelector('.theme-toggle');
+    inner.insertBefore(btn, toggle || inner.lastElementChild);
+  }
 
   function set(open){
     header.classList.toggle('nav-open', open);
@@ -465,11 +536,6 @@
   };
   var page = (location.pathname.split('/').pop() || '').replace(/\.html$/, '');
   var EMAIL = 'support@tekjee.com';
-  /* booking requests are emailed by FormSubmit (formsubmit.co) to FORM_TO, with a copy to FORM_CC.
-     A form on a new address or domain must be activated once from the email FormSubmit sends to FORM_TO
-     on its first request; that email also gives a random alias that can replace the address in the URL. */
-  var FORM_ENDPOINT = 'https://formsubmit.co/ajax/ibrahimqadir35@gmail.com';
-  var FORM_CC = 'ibrahimqadir@tekjee.com';
 
   var overlay = document.createElement('div');
   overlay.className = 'book-overlay';
