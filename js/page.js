@@ -460,6 +460,19 @@ var FORM_CC = 'ibrahimqadir@tekjee.com';
   document.addEventListener('visibilitychange', function(){ if (document.visibilityState === 'hidden') sendTranscript(); });
 })();
 
+/* WhatsApp: a floating button (bottom left) that opens a WhatsApp chat with TEKJEE (+92 316 2874600) */
+(function(){
+  var a = document.createElement('a');
+  a.className = 'wa-float';
+  a.href = 'https://wa.me/923162874600?text=' + encodeURIComponent('Hi TEKJEE, I would like to know more about your services.');
+  a.target = '_blank';
+  a.rel = 'noopener noreferrer';
+  a.setAttribute('aria-label', 'Message TEKJEE on WhatsApp');
+  a.title = 'Chat on WhatsApp';
+  a.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 20.5l1.3-4a8.5 8.5 0 1 1 3.3 3z"/><path d="M9.2 8.3c-.4 2.9 3.5 6.9 6.5 6.5l.9-1.5-2-1.1-1 .8a4.7 4.7 0 0 1-2.6-2.6l.8-1-1.1-2z"/></svg>';
+  document.body.appendChild(a);
+})();
+
 /* Services dropdown in the nav: hover opens it on desktop, click/tap toggles it,
    Escape or a click outside closes it */
 (function(){

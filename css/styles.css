@@ -1054,6 +1054,8 @@
   .social-ig:hover{background:linear-gradient(135deg,#feda75,#d6336c 55%,#4f5bd5);}
   .social-in:hover{background:#0a66c2;}
   .social-fb:hover{background:#1877f2;}
+  .social-wa{color:#1da851;}
+  .social-wa:hover{background:#25d366;}
   @media (max-width:720px){ .contact-cards{grid-template-columns:1fr;max-width:420px;} }
 
   /* ---------- DARK SERVICE CARDS + AI SECTION ---------- */
@@ -1841,4 +1843,20 @@
   @media (prefers-reduced-motion: reduce){
     .xs *, .xs svg *{animation:none !important;}
     .xs .wd-wire, .xs .wd-query, .xs .wd-dots, .xs .a-hide4, .xs .vm-shutter{display:none;}
+  }
+
+/* ---------- WHATSAPP: floating chat button, bottom left (added by page.js; the assistant sits bottom right) ---------- */
+  .wa-float{
+    position:fixed;left:18px;bottom:16px;z-index:70;
+    width:56px;height:56px;border-radius:50%;display:grid;place-items:center;
+    background:#25d366;color:#fff;box-shadow:0 12px 26px -10px rgba(10,80,40,.55);
+    transition:transform .2s ease, box-shadow .2s ease;
+  }
+  .wa-float svg{width:30px;height:30px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;}
+  .wa-float:hover{transform:translateY(-3px);box-shadow:0 16px 30px -10px rgba(10,80,40,.6);}
+  .wa-float:focus-visible{outline:3px solid #0b57b8;outline-offset:3px;}
+  body.book-lock .wa-float{display:none;}
+  @media (max-width:640px){
+    .wa-float{left:10px;bottom:10px;width:50px;height:50px;}
+    .wa-float svg{width:27px;height:27px;}
   }
