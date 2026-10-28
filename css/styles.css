@@ -1009,6 +1009,10 @@
   .bot-chips:empty{display:none;}
   .bot-chips button{flex:none;white-space:nowrap;padding:.35em .8em;border-radius:999px;border:1px solid #cfe2f7;background:#fff;font-family:var(--font-body);font-size:.78rem;font-weight:600;color:#0c2340;cursor:pointer;}
   .bot-chips button:hover{border-color:#0b57b8;background:#eaf3fd;}
+  .bot-wa{display:flex;align-items:center;justify-content:center;gap:7px;padding:8px 12px;border-top:1px solid #dcebfa;background:#effbf3;color:#128c4a;font-family:var(--font-body);font-size:.8rem;font-weight:700;}
+  .bot-wa[hidden]{display:none;}
+  .bot-wa svg{width:17px;height:17px;flex:none;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+  .bot-wa:hover{background:#25d366;color:#fff;}
   .bot-form{display:flex;gap:8px;padding:10px 12px;border-top:1px solid #dcebfa;background:#fff;}
   .bot-form input{flex:1;min-width:0;padding:.65em .9em;border:1px solid #cfe2f7;border-radius:999px;font-family:var(--font-body);font-size:.9rem;color:#0c2340;background:#fff;}
   .bot-form input:focus{outline:2px solid #0b57b8;outline-offset:1px;}

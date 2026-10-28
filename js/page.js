@@ -237,6 +237,9 @@
    on its first request; that email also gives a random alias that can replace the address in the URL. */
 var FORM_ENDPOINT = 'https://formsubmit.co/ajax/ibrahimqadir35@gmail.com';
 var FORM_CC = 'ibrahimqadir@tekjee.com';
+/* TEKJEE WhatsApp (+92 347 1944273), in the international format wa.me links need */
+var WHATSAPP_NUMBER = '923471944273';
+var WHATSAPP_ICON = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 20.5l1.3-4a8.5 8.5 0 1 1 3.3 3z"/><path d="M9.2 8.3c-.4 2.9 3.5 6.9 6.5 6.5l.9-1.5-2-1.1-1 .8a4.7 4.7 0 0 1-2.6-2.6l.8-1-1.1-2z"/></svg>';
 
 /* TEKJEE assistant: a small chat window. It answers from a built-in knowledge base about TEKJEE (no external AI service).
    It asks for the visitor's email first; when the chat ends (closed, or the visitor leaves the page) the whole
@@ -337,12 +340,43 @@ var FORM_CC = 'ibrahimqadir@tekjee.com';
     botSay([{text: 'Thanks! How can I help you today? Ask me about TEKJEE’s services, GEO or how to get started.'}], showChips);
   }
 
+  /* true once the visitor has asked something (the email they typed doesn't count) */
+  function asked(){ return history.some(function(m){ return m.f === 'me' && !m.e; }); }
+
+  /* "Send this chat on WhatsApp": once the visitor has asked something, a link under the chat opens
+     WhatsApp to TEKJEE's number with the conversation already typed in; the visitor presses Send */
+  var waLink = document.createElement('a');
+  waLink.className = 'bot-wa';
+  waLink.target = '_blank';
+  waLink.rel = 'noopener noreferrer';
+  waLink.hidden = true;
+  waLink.innerHTML = WHATSAPP_ICON + '<span>Send this chat to TEKJEE on WhatsApp</span>';
+  form.parentNode.insertBefore(waLink, form);
+
+  function whatsappText(){
+    var lines = [];
+    history.forEach(function(m){ if (!m.e) lines.push((m.f === 'me' ? 'Me: ' : 'TEKJEE assistant: ') + m.t); });
+    /* keep the link a sensible length: the latest messages are kept, the oldest dropped */
+    var body = '', cut = false;
+    for (var i = lines.length - 1; i >= 0; i--){
+      if (body.length + lines[i].length > 1800){ cut = true; break; }
+      body = lines[i] + (body ? '\n\n' + body : '');
+    }
+    return 'Hi TEKJEE, here is my chat with your website assistant.\n' +
+      (visitorEmail ? 'My email: ' + visitorEmail + '\n' : '') +
+      'Page: ' + location.href + '\n\n' +
+      (cut ? '(earlier messages left out)\n\n' : '') + body;
+  }
+  function updateWa(){
+    waLink.hidden = !asked();
+    if (!waLink.hidden) waLink.href = 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(whatsappText());
+  }
+
   /* emails the whole chat to the TEKJEE team, once there is something new since the last copy.
      sendBeacon (or a keepalive fetch) still delivers it while the page is being closed. */
   function sendTranscript(){
     if (!visitorEmail || history.length <= sentLen) return;
-    var asked = history.some(function(m){ return m.f === 'me' && !m.e; });
-    if (!asked) return;
+    if (!asked()) return;
     sentLen = history.length;
     try { sessionStorage.setItem('tekBotSent', String(sentLen)); } catch(e){}
     var data = new URLSearchParams();
@@ -371,7 +405,7 @@ var FORM_CC = 'ibrahimqadir@tekjee.com';
     });
     log.appendChild(el);
     scrollDown();
-    if (!silent){ history.push({f: from, t: text, l: links || []}); save(); }
+    if (!silent){ history.push({f: from, t: text, l: links || []}); save(); updateWa(); }
     return el;
   }
   function typing(){
@@ -408,7 +442,7 @@ var FORM_CC = 'ibrahimqadir@tekjee.com';
     addMsg('me', text);
     input.value = '';
     chips.innerHTML = '';
-    if (!visitorEmail){ history[history.length - 1].e = 1; save(); takeEmail(text); return; }
+    if (!visitorEmail){ history[history.length - 1].e = 1; save(); updateWa(); takeEmail(text); return; }
     var r = answer(text);
     botSay([r], showChips);
   }
@@ -419,6 +453,7 @@ var FORM_CC = 'ibrahimqadir@tekjee.com';
     if (saved && saved.length){
       history = saved;
       saved.forEach(function(m){ addMsg(m.f, m.t, m.l, true); });
+      updateWa();
       if (visitorEmail) showChips(); else askEmail();
       return;
     }
@@ -460,16 +495,16 @@ var FORM_CC = 'ibrahimqadir@tekjee.com';
   document.addEventListener('visibilitychange', function(){ if (document.visibilityState === 'hidden') sendTranscript(); });
 })();
 
-/* WhatsApp: a floating button (bottom left) that opens a WhatsApp chat with TEKJEE (+92 316 2874600) */
+/* WhatsApp: a floating button (bottom left) that opens a WhatsApp chat with TEKJEE (WHATSAPP_NUMBER) */
 (function(){
   var a = document.createElement('a');
   a.className = 'wa-float';
-  a.href = 'https://wa.me/923162874600?text=' + encodeURIComponent('Hi TEKJEE, I would like to know more about your services.');
+  a.href = 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent('Hi TEKJEE, I would like to know more about your services.');
   a.target = '_blank';
   a.rel = 'noopener noreferrer';
   a.setAttribute('aria-label', 'Message TEKJEE on WhatsApp');
   a.title = 'Chat on WhatsApp';
-  a.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 20.5l1.3-4a8.5 8.5 0 1 1 3.3 3z"/><path d="M9.2 8.3c-.4 2.9 3.5 6.9 6.5 6.5l.9-1.5-2-1.1-1 .8a4.7 4.7 0 0 1-2.6-2.6l.8-1-1.1-2z"/></svg>';
+  a.innerHTML = WHATSAPP_ICON;
   document.body.appendChild(a);
 })();
 
